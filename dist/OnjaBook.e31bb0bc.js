@@ -33983,16 +33983,14 @@ function ContextProvider(_ref) {
   function handleSubmit(e) {
     e.preventDefault();
     var form = e.target;
-    console.log(input);
+    console.log(form.photo.value);
     var newPost = {
       photo: form.photo.value,
       legend: form.legend.value,
-      like: 0,
       id: Date.now()
     };
-    posts.push(newPost);
-    setPosts(_toConsumableArray(posts));
-    console.log(posts);
+    console.log(newPost);
+    setPosts([].concat(_toConsumableArray(posts), [newPost]));
     e.target.reset();
   }
 
@@ -34064,11 +34062,11 @@ function PostList() {
       className: "user__profile"
     }, /*#__PURE__*/_react.default.createElement("img", {
       className: "profile__image",
-      src: post.profile,
-      alt: post.userName
+      src: "https://bit.ly/37m6KRs",
+      alt: "my profile"
     }), /*#__PURE__*/_react.default.createElement("p", {
       className: "name"
-    }, post.userName)), /*#__PURE__*/_react.default.createElement("p", null, post.legend), /*#__PURE__*/_react.default.createElement("img", {
+    }, "Hallie Cheyenne")), /*#__PURE__*/_react.default.createElement("p", null, post.legend), /*#__PURE__*/_react.default.createElement("img", {
       src: post.photo,
       alt: post.legend
     }), /*#__PURE__*/_react.default.createElement("div", {
@@ -34113,28 +34111,28 @@ function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function AddNewPost() {
-  var _useState = (0, _react.useState)(_context.Context),
-      handleSubmit = _useState.handleSubmit;
+  var _useContext = (0, _react.useContext)(_context.Context),
+      handleSubmit = _useContext.handleSubmit;
 
-  var _useState2 = (0, _react.useState)(""),
-      _useState3 = _slicedToArray(_useState2, 2),
-      photo = _useState3[0],
-      setPhoto = _useState3[1];
+  var _useState = (0, _react.useState)(""),
+      _useState2 = _slicedToArray(_useState, 2),
+      photo = _useState2[0],
+      setPhoto = _useState2[1];
 
-  var _useState4 = (0, _react.useState)(""),
-      _useState5 = _slicedToArray(_useState4, 2),
-      legend = _useState5[0],
-      setLegend = _useState5[1];
+  var _useState3 = (0, _react.useState)(""),
+      _useState4 = _slicedToArray(_useState3, 2),
+      legend = _useState4[0],
+      setLegend = _useState4[1];
 
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "form__group"
   }, /*#__PURE__*/_react.default.createElement("form", {
     onSubmit: handleSubmit
   }, /*#__PURE__*/_react.default.createElement("fieldset", null, /*#__PURE__*/_react.default.createElement("label", null, "New Post:"), /*#__PURE__*/_react.default.createElement("textarea", {
-    placeholder: "Say what's in your mind",
-    name: legend,
+    name: "legend",
+    value: legend,
     onChange: function onChange(e) {
-      return setLegend(console.log(e.target.value));
+      return setLegend(e.target.value);
     }
   })), /*#__PURE__*/_react.default.createElement("fieldset", null, /*#__PURE__*/_react.default.createElement("label", null, "Picture url:"), /*#__PURE__*/_react.default.createElement("input", {
     type: "text",
@@ -34145,7 +34143,6 @@ function AddNewPost() {
       return setPhoto(e.target.value);
     }
   })), /*#__PURE__*/_react.default.createElement("button", {
-    type: "submit",
     className: "save"
   }, "Save")));
 }
@@ -34261,7 +34258,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59347" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52231" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
