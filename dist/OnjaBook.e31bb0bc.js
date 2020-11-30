@@ -33889,39 +33889,15 @@ function Header() {
 
 var _default = Header;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js"}],"pages/App.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-var _reactRouterDom = require("react-router-dom");
-
-var _header = _interopRequireDefault(require("../components/header"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function App() {
-  return /*#__PURE__*/_react.default.createElement("div", {
-    className: "container"
-  }, /*#__PURE__*/_react.default.createElement(_header.default, null));
-}
-
-var _default = App;
-exports.default = _default;
-},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../components/header":"components/header.js"}],"post.json":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js"}],"post.json":[function(require,module,exports) {
 module.exports = [{
   "userName": "Cheyenne Hallie",
-  "profile": "https://bit.ly/3fPpcpr",
+  "photo": "https://bit.ly/3fPpcpr",
   "legend": "If trust is broken, sorry means nothing😥",
   "like": 0
 }, {
   "userName": "delancy",
-  "profile": "https://bit.ly/39uElLI",
+  "photo": "https://bit.ly/39uElLI",
   "legend": "It is a wonderful day",
   "like": 2
 }];
@@ -33977,7 +33953,73 @@ function ContextProvider(_ref) {
     }
   }, children);
 }
-},{"react":"node_modules/react/index.js","./post.json":"post.json"}],"index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./post.json":"post.json"}],"components/postList.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _context = require("../context");
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function PostList() {
+  var _useContext = (0, _react.useContext)(_context.Context),
+      posts = _useContext.posts;
+
+  return /*#__PURE__*/_react.default.createElement("div", null, posts.map(function (post) {
+    return /*#__PURE__*/_react.default.createElement("article", {
+      className: "post"
+    }, /*#__PURE__*/_react.default.createElement("div", {
+      className: "user__profile"
+    }, /*#__PURE__*/_react.default.createElement("p", null, post.userName)), /*#__PURE__*/_react.default.createElement("img", {
+      src: post.photo,
+      alt: post.legend
+    }), /*#__PURE__*/_react.default.createElement("p", null, post.legend), /*#__PURE__*/_react.default.createElement("div", {
+      className: "post__like"
+    }, /*#__PURE__*/_react.default.createElement("button", {
+      className: "like"
+    }, "Like"), /*#__PURE__*/_react.default.createElement("span", null, post.like)));
+  }));
+}
+
+var _default = PostList;
+exports.default = _default;
+},{"react":"node_modules/react/index.js","../context":"context.js"}],"pages/App.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _reactRouterDom = require("react-router-dom");
+
+var _header = _interopRequireDefault(require("../components/header"));
+
+var _postList = _interopRequireDefault(require("../components/postList"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function App() {
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/_react.default.createElement(_header.default, null), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Switch, null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
+    path: "/"
+  }, /*#__PURE__*/_react.default.createElement(_postList.default, null))));
+}
+
+var _default = App;
+exports.default = _default;
+},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../components/header":"components/header.js","../components/postList":"components/postList.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
