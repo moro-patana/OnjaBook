@@ -1,5 +1,7 @@
 import React, { useContext } from "react"
 import { Context } from "../context"
+import AddComment from "./addComment"
+import AddNewPost from "./addNewPost"
 
 function PostList() {
     const {posts, toggleLike} = useContext(Context)
@@ -17,6 +19,7 @@ function PostList() {
                        <button className="like" onClick={() => toggleLike(post.id)}>Like</button>
                        <span>{post.like}</span>
                    </div>
+                   <AddComment/>
                </article>
            ))}
        </div>
