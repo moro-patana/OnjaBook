@@ -34018,6 +34018,34 @@ function AddNewPost() {
 
 var _default = AddNewPost;
 exports.default = _default;
+},{"react":"node_modules/react/index.js"}],"components/userProfile.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function UserProfile() {
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "user__profile"
+  }, /*#__PURE__*/_react.default.createElement("form", null, /*#__PURE__*/_react.default.createElement("h3", null, "Options"), /*#__PURE__*/_react.default.createElement("fieldset", null, /*#__PURE__*/_react.default.createElement("label", null, "UserName"), /*#__PURE__*/_react.default.createElement("input", {
+    type: "text",
+    placeholder: "Type your username here"
+  })), /*#__PURE__*/_react.default.createElement("fieldset", null, /*#__PURE__*/_react.default.createElement("label", null, "Profile Picture"), /*#__PURE__*/_react.default.createElement("input", {
+    type: "text",
+    placeholder: "Paste a url here"
+  })), /*#__PURE__*/_react.default.createElement("button", {
+    className: "save"
+  }, "Save")));
+}
+
+var _default = UserProfile;
+exports.default = _default;
 },{"react":"node_modules/react/index.js"}],"pages/App.js":[function(require,module,exports) {
 "use strict";
 
@@ -34036,6 +34064,8 @@ var _postList = _interopRequireDefault(require("../components/postList"));
 
 var _addNewPost = _interopRequireDefault(require("../components/addNewPost"));
 
+var _userProfile = _interopRequireDefault(require("../components/userProfile"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function App() {
@@ -34046,12 +34076,14 @@ function App() {
     path: "/"
   }, /*#__PURE__*/_react.default.createElement(_postList.default, null)), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
     path: "/addPost"
-  }, /*#__PURE__*/_react.default.createElement(_addNewPost.default, null))));
+  }, /*#__PURE__*/_react.default.createElement(_addNewPost.default, null)), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
+    path: "/profile"
+  }, /*#__PURE__*/_react.default.createElement(_userProfile.default, null))));
 }
 
 var _default = App;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../components/header":"components/header.js","../components/postList":"components/postList.js","../components/addNewPost":"components/addNewPost.js"}],"index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../components/header":"components/header.js","../components/postList":"components/postList.js","../components/addNewPost":"components/addNewPost.js","../components/userProfile":"components/userProfile.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
