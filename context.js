@@ -5,6 +5,8 @@ const Context = React.createContext()
 
 function ContextProvider({children}) {
     const [posts, setPosts] = useState([])
+    const [profile, setProfile] = useState("https://bit.ly/37m6KRs")
+    const [name, setName] = useState("Hallie Cheyenne")
 
     useEffect(() => {
         setPosts(PostData)
@@ -30,6 +32,7 @@ function ContextProvider({children}) {
         const newPost = {
             photo: form.photo.value,
             legend: form.legend.value,
+            like: 0,
             id: Date.now()
         }
         console.log(newPost);
@@ -37,7 +40,7 @@ function ContextProvider({children}) {
         e.target.reset()
     }
      return (
-        <Context.Provider value={{posts, toggleLike, handleSubmit}}>
+        <Context.Provider value={{posts, toggleLike, handleSubmit, profile, name}}>
             {children}
         </Context.Provider>
     )
