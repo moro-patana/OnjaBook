@@ -33962,6 +33962,16 @@ function ContextProvider(_ref) {
       posts = _useState2[0],
       setPosts = _useState2[1];
 
+  var _useState3 = (0, _react.useState)("https://bit.ly/37m6KRs"),
+      _useState4 = _slicedToArray(_useState3, 2),
+      profile = _useState4[0],
+      setProfile = _useState4[1];
+
+  var _useState5 = (0, _react.useState)("Hallie Cheyenne"),
+      _useState6 = _slicedToArray(_useState5, 2),
+      name = _useState6[0],
+      setName = _useState6[1];
+
   (0, _react.useEffect)(function () {
     setPosts(_post.default);
   }, []);
@@ -33987,6 +33997,7 @@ function ContextProvider(_ref) {
     var newPost = {
       photo: form.photo.value,
       legend: form.legend.value,
+      like: 0,
       id: Date.now()
     };
     console.log(newPost);
@@ -33998,7 +34009,9 @@ function ContextProvider(_ref) {
     value: {
       posts: posts,
       toggleLike: toggleLike,
-      handleSubmit: handleSubmit
+      handleSubmit: handleSubmit,
+      profile: profile,
+      name: name
     }
   }, children);
 }
@@ -34050,7 +34063,9 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 function PostList() {
   var _useContext = (0, _react.useContext)(_context.Context),
       posts = _useContext.posts,
-      toggleLike = _useContext.toggleLike;
+      toggleLike = _useContext.toggleLike,
+      profile = _useContext.profile,
+      name = _useContext.name;
 
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "post__container"
@@ -34062,11 +34077,11 @@ function PostList() {
       className: "user__profile"
     }, /*#__PURE__*/_react.default.createElement("img", {
       className: "profile__image",
-      src: "https://bit.ly/37m6KRs",
-      alt: "my profile"
+      src: profile,
+      alt: name
     }), /*#__PURE__*/_react.default.createElement("p", {
       className: "name"
-    }, "Hallie Cheyenne")), /*#__PURE__*/_react.default.createElement("p", null, post.legend), /*#__PURE__*/_react.default.createElement("img", {
+    }, name)), /*#__PURE__*/_react.default.createElement("p", null, post.legend), /*#__PURE__*/_react.default.createElement("img", {
       src: post.photo,
       alt: post.legend
     }), /*#__PURE__*/_react.default.createElement("div", {
