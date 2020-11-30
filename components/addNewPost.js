@@ -1,8 +1,8 @@
-import React, { useState } from "react"
+import React, { useContext, useState } from "react"
 import { Context } from "../context"
 
 function AddNewPost() {
-    const {handleSubmit} = useState(Context)
+    const {handleSubmit} = useContext(Context)
     const [photo, setPhoto] = useState("")
     const [legend, setLegend] = useState("")
     
@@ -12,10 +12,9 @@ function AddNewPost() {
           <fieldset>
               <label>New Post:</label>
               <textarea 
-              placeholder="Say what's in your mind"
-              name={legend}
-              onChange={(e) => setLegend(console.log(e.target.value))}
-              ></textarea>
+              name="legend"
+              value={legend}
+              onChange={(e) => setLegend(e.target.value)}/>
           </fieldset>
           <fieldset>
               <label>Picture url:</label>
@@ -27,7 +26,7 @@ function AddNewPost() {
               onChange={(e) => setPhoto(e.target.value)}
               />
           </fieldset>
-          <button type="submit" className="save">Save</button>
+          <button className="save">Save</button>
          </form>
      </div>
     )
