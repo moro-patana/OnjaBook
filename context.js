@@ -22,8 +22,23 @@ function ContextProvider({children}) {
         })
         setPosts(likePost)
     }
+    function handleSubmit(e) {
+        e.preventDefault();
+        const form = e.target
+        console.log(input);
+        const newPost = {
+            photo: form.photo.value,
+            legend: form.legend.value,
+            like: 0,
+            id: Date.now()
+        }
+        posts.push(newPost)
+        setPosts([...posts])
+        console.log(posts);
+        e.target.reset()
+    }
      return (
-        <Context.Provider value={{posts, toggleLike}}>
+        <Context.Provider value={{posts, toggleLike, handleSubmit}}>
             {children}
         </Context.Provider>
     )
