@@ -34010,7 +34010,9 @@ function PostList() {
       className: "profile__image",
       src: post.profile,
       alt: post.userName
-    }), /*#__PURE__*/_react.default.createElement("p", null, post.userName)), /*#__PURE__*/_react.default.createElement("img", {
+    }), /*#__PURE__*/_react.default.createElement("p", {
+      className: "name"
+    }, post.userName)), /*#__PURE__*/_react.default.createElement("img", {
       src: post.photo,
       alt: post.legend
     }), /*#__PURE__*/_react.default.createElement("p", null, post.legend), /*#__PURE__*/_react.default.createElement("div", {
