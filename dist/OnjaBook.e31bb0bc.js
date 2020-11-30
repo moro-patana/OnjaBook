@@ -34004,33 +34004,6 @@ function AddComment() {
 
 var _default = AddComment;
 exports.default = _default;
-},{"react":"node_modules/react/index.js"}],"components/addNewPost.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function AddNewPost() {
-  return /*#__PURE__*/_react.default.createElement("div", {
-    className: "form__group"
-  }, /*#__PURE__*/_react.default.createElement("form", null, /*#__PURE__*/_react.default.createElement("fieldset", null, /*#__PURE__*/_react.default.createElement("label", null, "New Post:"), /*#__PURE__*/_react.default.createElement("textarea", {
-    placeholder: "Say what's in your mind"
-  })), /*#__PURE__*/_react.default.createElement("fieldset", null, /*#__PURE__*/_react.default.createElement("label", null, "Picture url:"), /*#__PURE__*/_react.default.createElement("input", {
-    type: "text",
-    placeholder: "Type Url"
-  })), /*#__PURE__*/_react.default.createElement("button", {
-    className: "save"
-  }, "Save")));
-}
-
-var _default = AddNewPost;
-exports.default = _default;
 },{"react":"node_modules/react/index.js"}],"components/postList.js":[function(require,module,exports) {
 "use strict";
 
@@ -34044,8 +34017,6 @@ var _react = _interopRequireWildcard(require("react"));
 var _context = require("../context");
 
 var _addComment = _interopRequireDefault(require("./addComment"));
-
-var _addNewPost = _interopRequireDefault(require("./addNewPost"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -34088,7 +34059,34 @@ function PostList() {
 
 var _default = PostList;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","../context":"context.js","./addComment":"components/addComment.js","./addNewPost":"components/addNewPost.js"}],"components/userProfile.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../context":"context.js","./addComment":"components/addComment.js"}],"components/addNewPost.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function AddNewPost() {
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "form__group"
+  }, /*#__PURE__*/_react.default.createElement("form", null, /*#__PURE__*/_react.default.createElement("fieldset", null, /*#__PURE__*/_react.default.createElement("label", null, "New Post:"), /*#__PURE__*/_react.default.createElement("textarea", {
+    placeholder: "Say what's in your mind"
+  })), /*#__PURE__*/_react.default.createElement("fieldset", null, /*#__PURE__*/_react.default.createElement("label", null, "Picture url:"), /*#__PURE__*/_react.default.createElement("input", {
+    type: "text",
+    placeholder: "Type Url"
+  })), /*#__PURE__*/_react.default.createElement("button", {
+    className: "save"
+  }, "Save")));
+}
+
+var _default = AddNewPost;
+exports.default = _default;
+},{"react":"node_modules/react/index.js"}],"components/userProfile.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {

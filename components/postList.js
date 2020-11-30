@@ -1,7 +1,6 @@
 import React, { useContext } from "react"
 import { Context } from "../context"
 import AddComment from "./addComment"
-import AddNewPost from "./addNewPost"
 
 function PostList() {
     const {posts, toggleLike} = useContext(Context)
