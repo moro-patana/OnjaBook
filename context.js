@@ -25,16 +25,15 @@ function ContextProvider({children}) {
     function handleSubmit(e) {
         e.preventDefault();
         const form = e.target
-        console.log(input);
+        console.log(form.photo.value);
+
         const newPost = {
             photo: form.photo.value,
             legend: form.legend.value,
-            like: 0,
             id: Date.now()
         }
-        posts.push(newPost)
-        setPosts([...posts])
-        console.log(posts);
+        console.log(newPost);
+        setPosts([...posts, newPost])
         e.target.reset()
     }
      return (
