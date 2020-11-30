@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/moro-patana/OnjaBook/issues"
   },
-  "homepage": "https://github.com/moro-patana/OnjaBook#readme"
+  "homepage": "https://github.com/moro-patana/OnjaBook#readme",
+  "dependencies": {
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-router-dom": "^5.2.0"
+  }
 }
