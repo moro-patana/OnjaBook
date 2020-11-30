@@ -13,10 +13,7 @@ function Header() {
                  <p className="menu">Add a post</p>
               </Link>
                <Link to="/profile">
-                  <div className="menu">
-                      <p>UserName</p>
-                      <img src="https://bit.ly/3fPpcpr" alt="My profile"/>
-                  </div>
+                  <p className="menu">UserName</p>
               </Link>
     
           </div>
