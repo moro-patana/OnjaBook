@@ -34013,8 +34013,11 @@ function App() {
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "container"
   }, /*#__PURE__*/_react.default.createElement(_header.default, null), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Switch, null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
+    exact: true,
     path: "/"
-  }, /*#__PURE__*/_react.default.createElement(_postList.default, null))));
+  }, /*#__PURE__*/_react.default.createElement(_postList.default, null)), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
+    path: "/addPost"
+  }, "Post")));
 }
 
 var _default = App;

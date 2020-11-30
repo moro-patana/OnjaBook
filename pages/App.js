@@ -7,8 +7,11 @@ function App() {
         <div className="container">
             <Header/>
             <Switch>
-                <Route path="/">
+                <Route exact path="/">
                     <PostList/>
+                </Route>
+                <Route path="/addPost">
+                    Post
                 </Route>
             </Switch>
         </div>
