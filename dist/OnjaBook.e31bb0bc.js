@@ -33922,6 +33922,12 @@ function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return 
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -33949,9 +33955,25 @@ function ContextProvider(_ref) {
   (0, _react.useEffect)(function () {
     setPosts(_post.default);
   }, []);
+
+  function toggleLike(id) {
+    var likePost = posts.map(function (post) {
+      if (post.id === Number(id)) {
+        console.log(post.like);
+        return _objectSpread(_objectSpread({}, post), {}, {
+          like: post.like + 1
+        });
+      }
+
+      return _objectSpread({}, post);
+    });
+    setPosts(likePost);
+  }
+
   return /*#__PURE__*/_react.default.createElement(Context.Provider, {
     value: {
-      posts: posts
+      posts: posts,
+      toggleLike: toggleLike
     }
   }, children);
 }
@@ -33973,7 +33995,8 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function PostList() {
   var _useContext = (0, _react.useContext)(_context.Context),
-      posts = _useContext.posts;
+      posts = _useContext.posts,
+      toggleLike = _useContext.toggleLike;
 
   return /*#__PURE__*/_react.default.createElement("div", null, posts.map(function (post) {
     return /*#__PURE__*/_react.default.createElement("article", {
@@ -33986,7 +34009,10 @@ function PostList() {
     }), /*#__PURE__*/_react.default.createElement("p", null, post.legend), /*#__PURE__*/_react.default.createElement("div", {
       className: "post__like"
     }, /*#__PURE__*/_react.default.createElement("button", {
-      className: "like"
+      className: "like",
+      onClick: function onClick() {
+        return toggleLike(post.id);
+      }
     }, "Like"), /*#__PURE__*/_react.default.createElement("span", null, post.like)));
   }));
 }
