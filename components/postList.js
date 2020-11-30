@@ -8,6 +8,7 @@ function PostList() {
            {posts.map(post => (
                <article key={post.id} className="post">
                    <div className="user__profile">
+                       <img className="profile__image" src={post.profile} alt={post.userName}/>
                        <p>{post.userName}</p>
                    </div>
                    <img src={post.photo} alt={post.legend}/>

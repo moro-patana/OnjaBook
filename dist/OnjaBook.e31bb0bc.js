@@ -34006,7 +34006,11 @@ function PostList() {
       className: "post"
     }, /*#__PURE__*/_react.default.createElement("div", {
       className: "user__profile"
-    }, /*#__PURE__*/_react.default.createElement("p", null, post.userName)), /*#__PURE__*/_react.default.createElement("img", {
+    }, /*#__PURE__*/_react.default.createElement("img", {
+      className: "profile__image",
+      src: post.profile,
+      alt: post.userName
+    }), /*#__PURE__*/_react.default.createElement("p", null, post.userName)), /*#__PURE__*/_react.default.createElement("img", {
       src: post.photo,
       alt: post.legend
     }), /*#__PURE__*/_react.default.createElement("p", null, post.legend), /*#__PURE__*/_react.default.createElement("div", {
