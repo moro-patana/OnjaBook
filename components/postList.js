@@ -4,7 +4,7 @@ import { Context } from "../context"
 function PostList() {
     const {posts, toggleLike} = useContext(Context)
     return (
-       <div>
+       <div className="post__container">
            {posts.map(post => (
                <article key={post.id} className="post">
                    <div className="user__profile">

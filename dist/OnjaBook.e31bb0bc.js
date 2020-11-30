@@ -34000,7 +34000,9 @@ function PostList() {
       posts = _useContext.posts,
       toggleLike = _useContext.toggleLike;
 
-  return /*#__PURE__*/_react.default.createElement("div", null, posts.map(function (post) {
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "post__container"
+  }, posts.map(function (post) {
     return /*#__PURE__*/_react.default.createElement("article", {
       key: post.id,
       className: "post"
