@@ -7,3 +7,7 @@ img {
     width: 100%;
     border-radius: 10px;
 }
+.profile__image {
+    width: 50px;
+    border-radius: 50%;
+}
