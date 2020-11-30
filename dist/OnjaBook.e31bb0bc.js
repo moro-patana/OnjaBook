@@ -33870,22 +33870,24 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function Header() {
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "page__heading"
+  }, /*#__PURE__*/_react.default.createElement("h1", null, "OnjaBook"), /*#__PURE__*/_react.default.createElement("div", {
+    className: "page__menu"
   }, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
     to: "/"
   }, /*#__PURE__*/_react.default.createElement("p", {
     className: "menu"
   }, "Feed")), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
-    to: "/styles"
+    to: "/addPost"
   }, /*#__PURE__*/_react.default.createElement("p", {
     className: "menu"
   }, "Add a post")), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
-    to: "/addsong"
+    to: "/profile"
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: "menu"
   }, /*#__PURE__*/_react.default.createElement("p", null, "UserName"), /*#__PURE__*/_react.default.createElement("img", {
     src: "https://bit.ly/3fPpcpr",
     alt: "My profile"
-  }))));
+  })))));
 }
 
 var _default = Header;
