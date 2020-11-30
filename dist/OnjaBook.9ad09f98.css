@@ -1,6 +1,8 @@
-.menu img {
-    width: 10%;
-    border-radius: 50%;
+.page__menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
+
 
 /*# sourceMappingURL=/OnjaBook.9ad09f98.css.map */

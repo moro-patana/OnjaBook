@@ -1,1 +1,1 @@
-{"version":3,"sources":["index.css"],"names":[],"mappings":"AAAA;AACA;AACA;AACA","file":"OnjaBook.9ad09f98.css","sourceRoot":"..","sourcesContent":[".menu img {\r\n    width: 10%;\r\n    border-radius: 50%;\r\n}"]}
+{"version":3,"sources":["index.css"],"names":[],"mappings":"AAAA;AACA;AACA;AACA;AACA;AACA","file":"OnjaBook.9ad09f98.css","sourceRoot":"..","sourcesContent":[".page__menu {\r\n    display: flex;\r\n    flex-direction: row;\r\n    justify-content: space-between;\r\n}\r\n"]}

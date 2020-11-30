@@ -33882,12 +33882,9 @@ function Header() {
     className: "menu"
   }, "Add a post")), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
     to: "/profile"
-  }, /*#__PURE__*/_react.default.createElement("div", {
+  }, /*#__PURE__*/_react.default.createElement("p", {
     className: "menu"
-  }, /*#__PURE__*/_react.default.createElement("p", null, "UserName"), /*#__PURE__*/_react.default.createElement("img", {
-    src: "https://bit.ly/3fPpcpr",
-    alt: "My profile"
-  })))));
+  }, "UserName"))));
 }
 
 var _default = Header;
