@@ -1,9 +1,16 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
+import PostData from "./post.json"
+
 const Context = React.createContext()
 
 function ContextProvider({children}) {
-    return (
-        <Context.Provider>
+    const [posts, setPosts] = useState([])
+
+    useEffect(() => {
+        setPosts(PostData)
+    },[])
+     return (
+        <Context.Provider value={{posts}}>
             {children}
         </Context.Provider>
     )
