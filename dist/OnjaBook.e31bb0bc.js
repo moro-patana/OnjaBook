@@ -34012,10 +34012,10 @@ function PostList() {
       alt: post.userName
     }), /*#__PURE__*/_react.default.createElement("p", {
       className: "name"
-    }, post.userName)), /*#__PURE__*/_react.default.createElement("img", {
+    }, post.userName)), /*#__PURE__*/_react.default.createElement("p", null, post.legend), /*#__PURE__*/_react.default.createElement("img", {
       src: post.photo,
       alt: post.legend
-    }), /*#__PURE__*/_react.default.createElement("p", null, post.legend), /*#__PURE__*/_react.default.createElement("div", {
+    }), /*#__PURE__*/_react.default.createElement("div", {
       className: "post__like"
     }, /*#__PURE__*/_react.default.createElement("button", {
       className: "like",

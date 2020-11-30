@@ -11,8 +11,8 @@ function PostList() {
                        <img className="profile__image" src={post.profile} alt={post.userName}/>
                        <p className="name">{post.userName}</p>
                    </div>
-                   <img src={post.photo} alt={post.legend}/>
                    <p>{post.legend}</p>
+                   <img src={post.photo} alt={post.legend}/>
                    <div className="post__like">
                        <button className="like" onClick={() => toggleLike(post.id)}>Like</button>
                        <span>{post.like}</span>
