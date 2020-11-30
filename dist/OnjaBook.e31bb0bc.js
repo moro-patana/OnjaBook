@@ -34000,6 +34000,7 @@ function PostList() {
 
   return /*#__PURE__*/_react.default.createElement("div", null, posts.map(function (post) {
     return /*#__PURE__*/_react.default.createElement("article", {
+      key: post.id,
       className: "post"
     }, /*#__PURE__*/_react.default.createElement("div", {
       className: "user__profile"

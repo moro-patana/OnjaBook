@@ -6,7 +6,7 @@ function PostList() {
     return (
        <div>
            {posts.map(post => (
-               <article className="post">
+               <article key={post.id} className="post">
                    <div className="user__profile">
                        <p>{post.userName}</p>
                    </div>
