@@ -34,13 +34,21 @@ img {
 .name {
     padding-left: 10px;
 }
-.menu__profile {
+.menu__profile,
+.post__like {
     margin: 0;
     display: flex;
 }
 .menu__profile span {
     padding-top: 17px;
     padding-right: 20px;
+}
+.post__like {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.post__like span {
+    padding-left: 20px;
 }
 
 /*# sourceMappingURL=/OnjaBook.9ad09f98.css.map */
