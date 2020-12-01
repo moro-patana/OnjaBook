@@ -1,6 +1,8 @@
-import React from "react"
+import React, { useContext } from "react"
 import { Link } from "react-router-dom"
+import {Context } from "../context"
 function Header() {
+    const {profile, name} = useContext(Context)
     return (
         <div className="page__heading">
           <h1>OnjaBook</h1>
@@ -13,7 +15,10 @@ function Header() {
                  <p className="menu">Add a post</p>
               </Link>
                <Link to="/profile">
-                  <p className="menu">UserName</p>
+                  <p className="menu menu__profile">
+                      <span>{name}</span>
+                      <img className="profile__image" src={profile} alt={name}/>
+                  </p>
               </Link>
     
           </div>
