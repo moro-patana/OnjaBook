@@ -34043,6 +34043,8 @@ exports.default = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
+var _context = require("../context");
+
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
@@ -34065,6 +34067,10 @@ function AddComment() {
       comment = _useState2[0],
       setComment = _useState2[1];
 
+  var _useContext = (0, _react.useContext)(_context.Context),
+      name = _useContext.name,
+      profile = _useContext.profile;
+
   function handleClick(e) {
     e.preventDefault();
     setComment(e.target.comment.value);
@@ -34075,7 +34081,15 @@ function AddComment() {
     className: "add__comment"
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: "comment"
-  }, /*#__PURE__*/_react.default.createElement("p", null, comment)), /*#__PURE__*/_react.default.createElement("form", {
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "user__profile"
+  }, /*#__PURE__*/_react.default.createElement("img", {
+    className: "profile__image",
+    src: profile,
+    alt: name
+  }), /*#__PURE__*/_react.default.createElement("p", {
+    className: "name"
+  }, name)), /*#__PURE__*/_react.default.createElement("p", null, comment)), /*#__PURE__*/_react.default.createElement("form", {
     onSubmit: handleClick
   }, /*#__PURE__*/_react.default.createElement("fieldset", null, /*#__PURE__*/_react.default.createElement("input", {
     type: "text",
@@ -34088,7 +34102,7 @@ function AddComment() {
 
 var _default = AddComment;
 exports.default = _default;
-},{"react":"node_modules/react/index.js"}],"components/postList.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../context":"context.js"}],"components/postList.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {

@@ -1,6 +1,8 @@
-import React, { useState } from "react"
+import React, { useContext, useState } from "react"
+import { Context } from "../context"
 function AddComment() {
     const [comment, setComment] = useState("")
+    const {name, profile} = useContext(Context)
     function handleClick(e) {
         e.preventDefault()
         setComment(e.target.comment.value)
@@ -9,6 +11,10 @@ function AddComment() {
     return (
         <div className="add__comment">
             <div className="comment">
+                <div className="user__profile">
+                        <img className="profile__image" src={profile} alt={name}/>
+                        <p className="name">{name}</p>
+                </div>
                 <p>{comment}</p>
             </div>
             <form onSubmit={handleClick}>
