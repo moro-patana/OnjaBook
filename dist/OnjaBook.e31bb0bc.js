@@ -34022,7 +34022,15 @@ function Header() {
       dispatch = _useContext.dispatch;
 
   var users = state.users;
-  console.log(users[0]);
+  var getUser = users.map(function (user, index) {
+    if (index === 0) {
+      return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", null, user.userName), /*#__PURE__*/_react.default.createElement("img", {
+        className: "profile",
+        src: user.profilePictureUrl,
+        alt: user.userName
+      }));
+    }
+  });
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "page__heading"
   }, /*#__PURE__*/_react.default.createElement("h1", null, "OnjaBook"), /*#__PURE__*/_react.default.createElement("div", {
@@ -34037,7 +34045,7 @@ function Header() {
     className: "menu"
   }, "Add a post")), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
     to: "/profile"
-  }, /*#__PURE__*/_react.default.createElement("p", null, "UseName"))));
+  }, getUser)));
 }
 
 var _default = Header;
