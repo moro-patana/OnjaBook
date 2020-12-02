@@ -33945,9 +33945,19 @@ function ContextProvider(_ref) {
         return _objectSpread(_objectSpread({}, state), {}, {
           postList: action.value
         });
+
+      case "USER":
+        return _objectSpread(_objectSpread({}, state), {}, {
+          user: action.value
+        });
     }
   }, {
-    postList: []
+    postList: [],
+    user: {
+      id: 11111,
+      userName: "Hallie",
+      profile: "https://picsum.photos/100"
+    }
   }),
       _useReducer2 = _slicedToArray(_useReducer, 2),
       state = _useReducer2[0],
@@ -33958,20 +33968,15 @@ function ContextProvider(_ref) {
       type: "POST_LIST",
       value: _post.default
     });
-  }, []); // const [posts, setPosts] = useState([])
-  // console.log(posts);
-
-  var _useState = (0, _react.useState)({
-    userName: "Hallie",
-    id: 11111,
-    profile: "https://picsum.photos/100"
-  }),
-      _useState2 = _slicedToArray(_useState, 2),
-      user = _useState2[0],
-      setUser = _useState2[1]; // useEffect(() => {
-  //     setPosts(PostsData)
-  // },[])
-
+  }, []); // // const [posts, setPosts] = useState([])
+  // // console.log(posts);
+  // const [user, setUser] = useState({
+  //         userName: "Hallie", 
+  //         id: 11111, 
+  //         profile:"https://picsum.photos/100"})
+  // // useEffect(() => {
+  // //     setPosts(PostsData)
+  // // },[])
 
   function editProfile(e) {
     e.preventDefault();
@@ -34038,9 +34043,10 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function Header() {
   var _useContext = (0, _react.useContext)(_context.Context),
-      posts = _useContext.posts,
-      user = _useContext.user;
+      state = _useContext.state,
+      dispatch = _useContext.dispatch;
 
+  var user = state.user;
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "page__heading"
   }, /*#__PURE__*/_react.default.createElement("h1", null, "OnjaBook"), /*#__PURE__*/_react.default.createElement("div", {
@@ -34059,8 +34065,8 @@ function Header() {
     className: "menu profile_menu"
   }, /*#__PURE__*/_react.default.createElement("p", {
     className: "name"
-  }, "userName"), /*#__PURE__*/_react.default.createElement("img", {
-    src: "",
+  }, user.userName), /*#__PURE__*/_react.default.createElement("img", {
+    src: user.profile,
     className: "profile"
   })))));
 }
