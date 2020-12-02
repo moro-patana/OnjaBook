@@ -1,45 +1,64 @@
 [
     {
-        "id": 122237779,
-        "userProfile": "https://bit.ly/3mqLL6o",
-        "userName": "Noeline",
+        "postId": "1",
+        "date": "01/12/20",
+        "postTextContent": "This is the description",
+        "userId": "1212222",
         "imgUrl": "http://picsum.photos/100",
-        "description": "Keep up Guys!",
-        "like": 1,
-        "comment":[
+        "likes": [
             {
-                "friend": "Delancy",
-                "friendProfile": "http://picsum.photos/10",
-                "commentText": "Nice baby"
+                "likeId": "1",
+                "userId": "1234"
             },
             {
-                "friend": "Clopedia",
-                "friendProfile": "https://bit.ly/3fPpcpr",
-                "commentText": "Wow"
+                "likeId": "2",
+                "userId": "12344"
             }
-
+        ],
+        "comments": [
+            {
+                "commentId": 1,
+                "userId": "121212",
+                "date": "01/12/20",
+                "commentTextContent": "Hello, super post."
+            },
+            {
+                "commentId": 2,
+                "userId": "1212222",
+                "date": "30/11/20",
+                "commentTextContent": "Hello, super post."
+            }
         ]
     },
     {
-        "id": 1222377555,
-        "userProfile": "https://bit.ly/3mqLL6o",
-        "userName": "Rosny",
+        "postId": "2",
+        "date": "30/10/20",
+        "postTextContent": "This is the description",
+        "userId": "121212",
         "imgUrl": "http://picsum.photos/100",
-        "description": "Let's go",
-        "like": 1,
-        "comment":[
+        "likes": [
             {
-                "friend": "Delancy",
-                "friendProfile": "http://picsum.photos/10",
-                "commentText": "Nice baby"
+                "likeId": "1",
+                "userId": "1234"
             },
             {
-                "friend": "Clopedia",
-                "friendProfile": "https://bit.ly/3fPpcpr",
-                "commentText": "Wow"
+                "likeId": "2",
+                "userId": "12344"
             }
-
+        ],
+        "comments": [
+            {
+                "commentId": 1,
+                "userId": "1212222",
+                "date": "01/12/20",
+                "commentTextContent": "Hello, super post."
+            },
+            {
+                "commentId": 2,
+                "userId": "121212",
+                "date": "30/12/20",
+                "commentTextContent": "Hello, super post."
+            }
         ]
     }
-
 ]
