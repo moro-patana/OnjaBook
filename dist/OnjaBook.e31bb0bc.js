@@ -33943,12 +33943,17 @@ function ContextProvider(_ref) {
     switch (action.type) {
       case "POST_LIST":
         return _objectSpread(_objectSpread({}, state), {}, {
-          postList: action.value
+          postList: action.postList
         });
 
       case "USER":
         return _objectSpread(_objectSpread({}, state), {}, {
           user: action.value
+        });
+
+      case "ADD_NEW_POST":
+        return _objectSpread(_objectSpread({}, state), {}, {
+          postList: action.postList
         });
     }
   }, {
@@ -33966,7 +33971,7 @@ function ContextProvider(_ref) {
   (0, _react.useEffect)(function () {
     dispatch({
       type: "POST_LIST",
-      value: _post.default
+      postList: _post.default
     });
   }, []);
 
@@ -33981,34 +33986,17 @@ function ContextProvider(_ref) {
     e.target.reset();
   }
 
-  function addPost(e) {
+  function addComment(e) {
     e.preventDefault();
-    var newPost = {
-      id: 11111,
-      userProfile: user.profile,
-      userName: user.userName,
-      imgUrl: e.target.photo.value,
-      description: e.target.description.value,
-      comment: [{
-        friend: "Delancy",
-        friendProfile: "http://picsum.photos/10",
-        commentText: "Nice baby"
-      }]
+    var newComment = {
+      friend: user.userName,
+      friendProfile: user.profile,
+      commentText: e.target.comment.value
     };
-    setPosts([].concat(_toConsumableArray(posts), [newPost]));
-  } // function addComment(e) {
-  //  e.preventDefault()
-  //  const newComment = {
-  //      friend: user.userName,
-  //      friendProfile: user.profile,
-  //      commentText: e.target.comment.value
-  //  }
-  //  setPosts([...posts, newComment])
-  // }
-
+    setPosts([].concat(_toConsumableArray(posts), [newComment]));
+  }
 
   return /*#__PURE__*/_react.default.createElement(Context.Provider, {
-    //  value={{posts, user, setUser, editProfile, addPost}}
     value: {
       state: state,
       dispatch: dispatch
@@ -34124,7 +34112,6 @@ function postList() {
       dispatch = _useContext.dispatch;
 
   var postList = state.postList;
-  console.log(postList);
   return /*#__PURE__*/_react.default.createElement("div", null, postList.map(function (post) {
     return /*#__PURE__*/_react.default.createElement("article", {
       key: post.postId
@@ -34166,6 +34153,14 @@ function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return 
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -34180,7 +34175,11 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function AddNewPost() {
   var _useContext = (0, _react.useContext)(_context.Context),
-      addPost = _useContext.addPost;
+      state = _useContext.state,
+      dispatch = _useContext.dispatch;
+
+  var postList = state.postList,
+      user = state.user;
 
   var _useState = (0, _react.useState)(""),
       _useState2 = _slicedToArray(_useState, 2),
@@ -34192,24 +34191,39 @@ function AddNewPost() {
       legend = _useState4[0],
       setLegend = _useState4[1];
 
+  function handleSubmit(e) {
+    e.preventDefault();
+    console.log(e.target);
+    var newPost = {
+      id: 11111,
+      userProfile: user.profile,
+      userName: user.userName,
+      imgUrl: e.target.photo.value,
+      description: e.target.description.value,
+      likes: 0,
+      comment: [{
+        friend: "Delancy",
+        friendProfile: "http://picsum.photos/10",
+        commentText: "Nice baby"
+      }]
+    };
+    dispatch({
+      type: "ADD_NEW_POST",
+      postList: [].concat(_toConsumableArray(postList), [newPost])
+    });
+  }
+
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "form__group"
   }, /*#__PURE__*/_react.default.createElement("form", {
-    onSubmit: addPost
+    onSubmit: handleSubmit
   }, /*#__PURE__*/_react.default.createElement("fieldset", null, /*#__PURE__*/_react.default.createElement("label", null, "New Post:"), /*#__PURE__*/_react.default.createElement("textarea", {
     name: "description",
-    value: legend,
-    onChange: function onChange(e) {
-      return setLegend(e.target.value);
-    }
+    placeholder: "What's in your mind"
   })), /*#__PURE__*/_react.default.createElement("fieldset", null, /*#__PURE__*/_react.default.createElement("label", null, "Picture url:"), /*#__PURE__*/_react.default.createElement("input", {
     type: "text",
     name: "photo",
-    placeholder: "Type Url",
-    value: photo,
-    onChange: function onChange(e) {
-      return setPhoto(e.target.value);
-    }
+    placeholder: "Type Url"
   })), /*#__PURE__*/_react.default.createElement("button", {
     className: "save"
   }, "Save")));

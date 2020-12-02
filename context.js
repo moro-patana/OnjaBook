@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer,useState } from "react"
+import React, { useEffect, useReducer, useState } from "react"
 const Context = React.createContext()
 import PostsData from "./post.json"
 
@@ -6,8 +6,12 @@ import PostsData from "./post.json"
 function ContextProvider({children}) {
     const [state, dispatch] = useReducer((state, action) => {
         switch(action.type) {
-            case "POST_LIST": return {...state, postList: action.value};
+            case "POST_LIST": return {...state, postList: action.postList};
             case "USER": return {...state, user: action.value}
+            case "ADD_NEW_POST":
+                return {
+                    ...state, postList: action.postList}
+                
             
         } 
     }, {
@@ -20,11 +24,10 @@ function ContextProvider({children}) {
         
     });
     useEffect(() => {
-        dispatch({type: "POST_LIST", value: PostsData})
+        dispatch({type: "POST_LIST", postList: PostsData})
     
      }, [])
-
-    function editProfile(e) {
+     function editProfile(e) {
         e.preventDefault()
         const newUserProfile = {
             id: Date.now(),
@@ -36,37 +39,19 @@ function ContextProvider({children}) {
 
     }
 
-    function addPost(e) {
-          e.preventDefault()
-        const newPost = {
-            id: 11111,
-            userProfile: user.profile,
-            userName: user.userName,
-            imgUrl: e.target.photo.value,
-            description: e.target.description.value,
-            comment: [
-                {
-                friend: "Delancy",
-                friendProfile: "http://picsum.photos/10",
-                commentText: "Nice baby"
-                }
-            ]
-        }
-        setPosts([...posts, newPost])
-    }
-    // function addComment(e) {
-    //  e.preventDefault()
-    //  const newComment = {
-    //      friend: user.userName,
-    //      friendProfile: user.profile,
-    //      commentText: e.target.comment.value
-    //  }
-    //  setPosts([...posts, newComment])
+    
+    function addComment(e) {
+     e.preventDefault()
+     const newComment = {
+         friend: user.userName,
+         friendProfile: user.profile,
+         commentText: e.target.comment.value
+     }
+     setPosts([...posts, newComment])
 
-    // }
+    }
     return (
         <Context.Provider
-        //  value={{posts, user, setUser, editProfile, addPost}}
         value={{state, dispatch}}
         >
             {children}

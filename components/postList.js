@@ -5,20 +5,10 @@ import AddComment from "./addComment"
 function postList() {
     const { state, dispatch} = useContext(Context)
     const {postList} = state
-    console.log(postList);
     return (
         <div>
             {postList.map(post => (
                 <article key={post.postId}>
-                    {/* {post.postId === user.id 
-                    ? <header>
-                        <img className="profile" src={user.profile} />
-                        <p>{user.userName}</p>
-                      </header>
-                    : <header>
-                        <img className="profile" src={post.userProfile} />
-                        <p>{post.userName}</p>
-                      </header>} */}
                       <header>
                         <img className="profile" src={post.userProfile} />
                         <p>{post.userName}</p>
