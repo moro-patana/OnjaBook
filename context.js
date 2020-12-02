@@ -7,10 +7,16 @@ function ContextProvider({children}) {
     const [state, dispatch] = useReducer((state, action) => {
         switch(action.type) {
             case "POST_LIST": return {...state, postList: action.value};
+            case "USER": return {...state, user: action.value}
             
         } 
     }, {
         postList: [],
+        user: {
+            id: 11111,
+            userName: "Hallie",
+            profile:"https://picsum.photos/100"
+        }
         
     });
     useEffect(() => {
@@ -18,16 +24,16 @@ function ContextProvider({children}) {
     
      }, [])
 
-    // const [posts, setPosts] = useState([])
-    // console.log(posts);
-    const [user, setUser] = useState({
-            userName: "Hallie", 
-            id: 11111, 
-            profile:"https://picsum.photos/100"})
+    // // const [posts, setPosts] = useState([])
+    // // console.log(posts);
+    // const [user, setUser] = useState({
+    //         userName: "Hallie", 
+    //         id: 11111, 
+    //         profile:"https://picsum.photos/100"})
 
-    // useEffect(() => {
-    //     setPosts(PostsData)
-    // },[])
+    // // useEffect(() => {
+    // //     setPosts(PostsData)
+    // // },[])
     function editProfile(e) {
         e.preventDefault()
         const newUserProfile = {
