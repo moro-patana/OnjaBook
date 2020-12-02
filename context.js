@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 const Context = React.createContext()
-import PostsData from "./user.json"
+import PostsData from "./post.json"
 
 
 function ContextProvider({children}) {
@@ -44,19 +44,19 @@ function ContextProvider({children}) {
         }
         setPosts([...posts, newPost])
     }
-    function addComment(e) {
-     e.preventDefault()
-     const newComment = {
-         friend: user.userName,
-         friendProfile: user.profile,
-         commentText: e.target.comment.value
-     }
-     setPosts([...posts, newComment])
+    // function addComment(e) {
+    //  e.preventDefault()
+    //  const newComment = {
+    //      friend: user.userName,
+    //      friendProfile: user.profile,
+    //      commentText: e.target.comment.value
+    //  }
+    //  setPosts([...posts, newComment])
 
-    }
+    // }
     return (
         <Context.Provider
-         value={{posts, user, setUser, editProfile, addNewPost, addComment}}
+         value={{posts, user, setUser, editProfile, addNewPost}}
         >
             {children}
         </Context.Provider>
