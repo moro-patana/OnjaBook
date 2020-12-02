@@ -24,16 +24,6 @@ function ContextProvider({children}) {
     
      }, [])
 
-    // // const [posts, setPosts] = useState([])
-    // // console.log(posts);
-    // const [user, setUser] = useState({
-    //         userName: "Hallie", 
-    //         id: 11111, 
-    //         profile:"https://picsum.photos/100"})
-
-    // // useEffect(() => {
-    // //     setPosts(PostsData)
-    // // },[])
     function editProfile(e) {
         e.preventDefault()
         const newUserProfile = {

@@ -33968,15 +33968,7 @@ function ContextProvider(_ref) {
       type: "POST_LIST",
       value: _post.default
     });
-  }, []); // // const [posts, setPosts] = useState([])
-  // // console.log(posts);
-  // const [user, setUser] = useState({
-  //         userName: "Hallie", 
-  //         id: 11111, 
-  //         profile:"https://picsum.photos/100"})
-  // // useEffect(() => {
-  // //     setPosts(PostsData)
-  // // },[])
+  }, []);
 
   function editProfile(e) {
     e.preventDefault();
