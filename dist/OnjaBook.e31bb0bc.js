@@ -33964,7 +33964,7 @@ function ContextProvider(_ref) {
     e.target.reset();
   }
 
-  function addNewPost(e) {
+  function addPost(e) {
     e.preventDefault();
     var newPost = {
       id: 11111,
@@ -33996,7 +33996,7 @@ function ContextProvider(_ref) {
       user: user,
       setUser: setUser,
       editProfile: editProfile,
-      addNewPost: addNewPost
+      addPost: addPost
     }
   }, children);
 }
@@ -34166,7 +34166,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function AddNewPost() {
   var _useContext = (0, _react.useContext)(_context.Context),
-      handleSubmit = _useContext.handleSubmit;
+      addPost = _useContext.addPost;
 
   var _useState = (0, _react.useState)(""),
       _useState2 = _slicedToArray(_useState, 2),
@@ -34181,9 +34181,9 @@ function AddNewPost() {
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "form__group"
   }, /*#__PURE__*/_react.default.createElement("form", {
-    onSubmit: handleSubmit
+    onSubmit: addPost
   }, /*#__PURE__*/_react.default.createElement("fieldset", null, /*#__PURE__*/_react.default.createElement("label", null, "New Post:"), /*#__PURE__*/_react.default.createElement("textarea", {
-    name: "legend",
+    name: "description",
     value: legend,
     onChange: function onChange(e) {
       return setLegend(e.target.value);
