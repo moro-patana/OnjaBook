@@ -1,7 +1,22 @@
 import React, {useContext} from "react"
 import { Context } from "../context"
 function UserProfile() {
-    const {user, setUser, editProfile} = useContext(Context)
+    const {state, dispatch} = useContext(Context)
+    const { user } = state
+
+    function editProfile(e) {
+        e.preventDefault()
+        console.log(e.target);
+        const newUserProfile = {
+            id: Date.now(),
+            userName: e.target.name.value,
+            profile: e.target.profile.value
+        }
+        dispatch({type:"EDIT_PROFILE", user: {...user, newUserProfile}})
+        // setUser(newUserProfile)
+        e.target.reset()
+
+    }
      return (
         <div className="user__profile">
             <form onSubmit={editProfile}>

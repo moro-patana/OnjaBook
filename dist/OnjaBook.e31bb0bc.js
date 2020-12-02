@@ -33855,37 +33855,65 @@ if ("development" !== "production") {
 }
 },{"react-router":"node_modules/react-router/esm/react-router.js","@babel/runtime/helpers/esm/inheritsLoose":"node_modules/@babel/runtime/helpers/esm/inheritsLoose.js","react":"node_modules/react/index.js","history":"node_modules/history/esm/history.js","prop-types":"node_modules/prop-types/index.js","tiny-warning":"node_modules/tiny-warning/dist/tiny-warning.esm.js","@babel/runtime/helpers/esm/extends":"node_modules/@babel/runtime/helpers/esm/extends.js","@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js","tiny-invariant":"node_modules/tiny-invariant/dist/tiny-invariant.esm.js"}],"post.json":[function(require,module,exports) {
 module.exports = [{
-  "id": 122237779,
-  "userProfile": "https://bit.ly/3mqLL6o",
-  "userName": "Noeline",
+  "postId": "1",
+  "date": "01/12/20",
+  "postTextContent": "This is the description",
+  "userId": "1212222",
   "imgUrl": "http://picsum.photos/100",
-  "description": "Keep up Guys!",
-  "like": 1,
-  "comment": [{
-    "friend": "Delancy",
-    "friendProfile": "http://picsum.photos/10",
-    "commentText": "Nice baby"
+  "likes": [{
+    "likeId": "1",
+    "userId": "1234"
   }, {
-    "friend": "Clopedia",
-    "friendProfile": "https://bit.ly/3fPpcpr",
-    "commentText": "Wow"
+    "likeId": "2",
+    "userId": "12344"
+  }],
+  "comments": [{
+    "commentId": 1,
+    "userId": "121212",
+    "date": "01/12/20",
+    "commentTextContent": "Hello, super post."
+  }, {
+    "commentId": 2,
+    "userId": "1212222",
+    "date": "30/11/20",
+    "commentTextContent": "Hello, super post."
   }]
 }, {
-  "id": 1222377555,
-  "userProfile": "https://bit.ly/3mqLL6o",
-  "userName": "Rosny",
+  "postId": "2",
+  "date": "30/10/20",
+  "postTextContent": "This is the description",
+  "userId": "121212",
   "imgUrl": "http://picsum.photos/100",
-  "description": "Let's go",
-  "like": 1,
-  "comment": [{
-    "friend": "Delancy",
-    "friendProfile": "http://picsum.photos/10",
-    "commentText": "Nice baby"
+  "likes": [{
+    "likeId": "1",
+    "userId": "1234"
   }, {
-    "friend": "Clopedia",
-    "friendProfile": "https://bit.ly/3fPpcpr",
-    "commentText": "Wow"
+    "likeId": "2",
+    "userId": "12344"
+  }],
+  "comments": [{
+    "commentId": 1,
+    "userId": "1212222",
+    "date": "01/12/20",
+    "commentTextContent": "Hello, super post."
+  }, {
+    "commentId": 2,
+    "userId": "121212",
+    "date": "30/12/20",
+    "commentTextContent": "Hello, super post."
   }]
+}];
+},{}],"user.json":[function(require,module,exports) {
+module.exports = [{
+  "userId": "121212",
+  "userName": "Loïc",
+  "profilePictureUrl": "https://picsum.photos/100",
+  "birthDate": "13/09/1991"
+}, {
+  "userId": "1212222",
+  "userName": "Shaun",
+  "profilePictureUrl": "https://picsum.photos/100",
+  "birthDate": "13/09/1991"
 }];
 },{}],"context.js":[function(require,module,exports) {
 "use strict";
@@ -33900,19 +33928,13 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _post = _interopRequireDefault(require("./post.json"));
 
+var _user = _interopRequireDefault(require("./user.json"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
@@ -33932,8 +33954,7 @@ function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
-var Context = _react.default.createContext();
-
+var Context = (0, _react.createContext)();
 exports.Context = Context;
 
 function ContextProvider(_ref) {
@@ -33941,28 +33962,20 @@ function ContextProvider(_ref) {
 
   var _useReducer = (0, _react.useReducer)(function (state, action) {
     switch (action.type) {
-      case "POST_LIST":
+      case "SET_POST":
         return _objectSpread(_objectSpread({}, state), {}, {
-          postList: action.postList
+          posts: action.value
         });
 
-      case "USER":
+      case "SET_USERS":
         return _objectSpread(_objectSpread({}, state), {}, {
-          user: action.value
-        });
-
-      case "ADD_NEW_POST":
-        return _objectSpread(_objectSpread({}, state), {}, {
-          postList: action.postList
+          users: action.value
         });
     }
   }, {
-    postList: [],
-    user: {
-      id: 11111,
-      userName: "Hallie",
-      profile: "https://picsum.photos/100"
-    }
+    posts: [],
+    users: [] // userLoggedIn: '',
+
   }),
       _useReducer2 = _slicedToArray(_useReducer, 2),
       state = _useReducer2[0],
@@ -33970,32 +33983,14 @@ function ContextProvider(_ref) {
 
   (0, _react.useEffect)(function () {
     dispatch({
-      type: "POST_LIST",
-      postList: _post.default
+      type: "SET_POST",
+      value: _post.default
+    });
+    dispatch({
+      type: "SET_USERS",
+      value: _user.default
     });
   }, []);
-
-  function editProfile(e) {
-    e.preventDefault();
-    var newUserProfile = {
-      id: Date.now(),
-      userName: e.target.name.value,
-      profile: e.target.profile.value
-    };
-    setUser(newUserProfile);
-    e.target.reset();
-  }
-
-  function addComment(e) {
-    e.preventDefault();
-    var newComment = {
-      friend: user.userName,
-      friendProfile: user.profile,
-      commentText: e.target.comment.value
-    };
-    setPosts([].concat(_toConsumableArray(posts), [newComment]));
-  }
-
   return /*#__PURE__*/_react.default.createElement(Context.Provider, {
     value: {
       state: state,
@@ -34003,7 +33998,7 @@ function ContextProvider(_ref) {
     }
   }, children);
 }
-},{"react":"node_modules/react/index.js","./post.json":"post.json"}],"components/header.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./post.json":"post.json","./user.json":"user.json"}],"components/header.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -34026,7 +34021,8 @@ function Header() {
       state = _useContext.state,
       dispatch = _useContext.dispatch;
 
-  var user = state.user;
+  var users = state.users;
+  console.log(users[0]);
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "page__heading"
   }, /*#__PURE__*/_react.default.createElement("h1", null, "OnjaBook"), /*#__PURE__*/_react.default.createElement("div", {
@@ -34041,19 +34037,12 @@ function Header() {
     className: "menu"
   }, "Add a post")), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
     to: "/profile"
-  }, /*#__PURE__*/_react.default.createElement("div", {
-    className: "menu profile_menu"
-  }, /*#__PURE__*/_react.default.createElement("p", {
-    className: "name"
-  }, user.userName), /*#__PURE__*/_react.default.createElement("img", {
-    src: user.profile,
-    className: "profile"
-  })))));
+  }, /*#__PURE__*/_react.default.createElement("p", null, "UseName"))));
 }
 
 var _default = Header;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../context":"context.js"}],"components/addComment.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../context":"context.js"}],"components/postList.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -34069,75 +34058,48 @@ function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return 
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
-function AddComment() {
-  var _useContext = (0, _react.useContext)(_context.Context),
-      addNewComment = _useContext.addNewComment;
-
-  return /*#__PURE__*/_react.default.createElement("div", {
-    className: "add__comment"
-  }, /*#__PURE__*/_react.default.createElement("form", null, /*#__PURE__*/_react.default.createElement("fieldset", null, /*#__PURE__*/_react.default.createElement("input", {
-    type: "text",
-    placeholder: "Add a comment",
-    name: "comment"
-  }), /*#__PURE__*/_react.default.createElement("button", {
-    className: "post"
-  }, "Post"))));
-}
-
-var _default = AddComment;
-exports.default = _default;
-},{"react":"node_modules/react/index.js","../context":"context.js"}],"components/postList.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireWildcard(require("react"));
-
-var _context = require("../context");
-
-var _addComment = _interopRequireDefault(require("./addComment"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-
-function postList() {
+function PostList() {
   var _useContext = (0, _react.useContext)(_context.Context),
       state = _useContext.state,
       dispatch = _useContext.dispatch;
 
-  var postList = state.postList;
-  return /*#__PURE__*/_react.default.createElement("div", null, postList.map(function (post) {
+  var posts = state.posts,
+      users = state.users;
+  console.log(users);
+  var element = posts.map(function (post) {
+    var findUserId = users.find(function (user) {
+      return user.userId === post.userId;
+    });
+    console.log(findUserId);
     return /*#__PURE__*/_react.default.createElement("article", {
       key: post.postId
-    }, /*#__PURE__*/_react.default.createElement("header", null, /*#__PURE__*/_react.default.createElement("img", {
+    }, /*#__PURE__*/_react.default.createElement("header", null, /*#__PURE__*/_react.default.createElement("div", {
+      className: "user"
+    }, /*#__PURE__*/_react.default.createElement("img", {
       className: "profile",
-      src: post.userProfile
-    }), /*#__PURE__*/_react.default.createElement("p", null, post.userName)), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", null, post.description), /*#__PURE__*/_react.default.createElement("img", {
+      src: findUserId.profilePictureUrl,
+      alt: findUserId.userName
+    }), /*#__PURE__*/_react.default.createElement("p", null, findUserId.userName)), /*#__PURE__*/_react.default.createElement("p", null, post.date)), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", null, post.postTextContent), /*#__PURE__*/_react.default.createElement("img", {
       src: post.imgUrl
-    })), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("button", null, "Like"), /*#__PURE__*/_react.default.createElement("span", null, "0")), post.comment.map(function (item) {
-      return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
-        className: "comment"
+    })), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("button", null, "Like")), post.comments.map(function (comment) {
+      return /*#__PURE__*/_react.default.createElement("div", {
+        key: comment.commentId
       }, /*#__PURE__*/_react.default.createElement("img", {
         className: "profile",
-        src: item.friendProfile
-      }), /*#__PURE__*/_react.default.createElement("p", {
-        className: "friend"
-      }, item.friend)), /*#__PURE__*/_react.default.createElement("span", {
-        className: "commentText"
-      }, item.commentText));
-    }), /*#__PURE__*/_react.default.createElement(_addComment.default, null));
-  }));
+        src: users.find(function (user) {
+          return user.userId === comment.userId;
+        }).profilePictureUrl
+      }), /*#__PURE__*/_react.default.createElement("p", null, users.find(function (user) {
+        return user.userId === comment.userId;
+      }).userName), /*#__PURE__*/_react.default.createElement("p", null, comment.commentTextContent));
+    }));
+  });
+  return /*#__PURE__*/_react.default.createElement("div", null, element);
 }
 
-var _default = postList;
+var _default = PostList;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","../context":"context.js","./addComment":"components/addComment.js"}],"components/addNewPost.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../context":"context.js"}],"components/addNewPost.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -34157,21 +34119,13 @@ function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableTo
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
 function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
 
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
 
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function AddNewPost() {
   var _useContext = (0, _react.useContext)(_context.Context),
@@ -34180,16 +34134,6 @@ function AddNewPost() {
 
   var postList = state.postList,
       user = state.user;
-
-  var _useState = (0, _react.useState)(""),
-      _useState2 = _slicedToArray(_useState, 2),
-      photo = _useState2[0],
-      setPhoto = _useState2[1];
-
-  var _useState3 = (0, _react.useState)(""),
-      _useState4 = _slicedToArray(_useState3, 2),
-      legend = _useState4[0],
-      setLegend = _useState4[1];
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -34247,11 +34191,36 @@ function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return 
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function UserProfile() {
   var _useContext = (0, _react.useContext)(_context.Context),
-      user = _useContext.user,
-      setUser = _useContext.setUser,
-      editProfile = _useContext.editProfile;
+      state = _useContext.state,
+      dispatch = _useContext.dispatch;
+
+  var user = state.user;
+
+  function editProfile(e) {
+    e.preventDefault();
+    console.log(e.target);
+    var newUserProfile = {
+      id: Date.now(),
+      userName: e.target.name.value,
+      profile: e.target.profile.value
+    };
+    dispatch({
+      type: "EDIT_PROFILE",
+      user: _objectSpread(_objectSpread({}, user), {}, {
+        newUserProfile: newUserProfile
+      })
+    }); // setUser(newUserProfile)
+
+    e.target.reset();
+  }
 
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "user__profile"

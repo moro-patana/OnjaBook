@@ -4,9 +4,7 @@ import { Context } from "../context"
 function AddNewPost() {
     const {state, dispatch} = useContext(Context)
     const { postList, user } = state;
-    const [photo, setPhoto] = useState("")
-    const [legend, setLegend] = useState("")
-
+ 
     function handleSubmit(e) {
       e.preventDefault();
         console.log(e.target);
