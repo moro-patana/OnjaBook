@@ -26,7 +26,7 @@ function ContextProvider({children}) {
 
     }
 
-    function addNewPost(e) {
+    function addPost(e) {
           e.preventDefault()
         const newPost = {
             id: 11111,
@@ -56,7 +56,7 @@ function ContextProvider({children}) {
     // }
     return (
         <Context.Provider
-         value={{posts, user, setUser, editProfile, addNewPost}}
+         value={{posts, user, setUser, editProfile, addPost}}
         >
             {children}
         </Context.Provider>
