@@ -33981,7 +33981,9 @@ function ContextProvider(_ref) {
       toggleLike: toggleLike,
       handleSubmit: handleSubmit,
       profile: profile,
-      name: name
+      setProfile: setProfile,
+      name: name,
+      setName: setName
     }
   }, children);
 }
@@ -34023,12 +34025,8 @@ function Header() {
   }, "Add a post")), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
     to: "/profile"
   }, /*#__PURE__*/_react.default.createElement("p", {
-    className: "menu menu__profile"
-  }, /*#__PURE__*/_react.default.createElement("span", null, name), /*#__PURE__*/_react.default.createElement("img", {
-    className: "profile__image",
-    src: profile,
-    alt: name
-  })))));
+    className: "menu"
+  }, /*#__PURE__*/_react.default.createElement("span", null, name)))));
 }
 
 var _default = Header;
@@ -34042,8 +34040,6 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
-
-var _context = require("../context");
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
 
@@ -34067,10 +34063,6 @@ function AddComment() {
       comment = _useState2[0],
       setComment = _useState2[1];
 
-  var _useContext = (0, _react.useContext)(_context.Context),
-      name = _useContext.name,
-      profile = _useContext.profile;
-
   function handleClick(e) {
     e.preventDefault();
     setComment(e.target.comment.value);
@@ -34081,15 +34073,7 @@ function AddComment() {
     className: "add__comment"
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: "comment"
-  }, /*#__PURE__*/_react.default.createElement("div", {
-    className: "user__profile"
-  }, /*#__PURE__*/_react.default.createElement("img", {
-    className: "profile__image",
-    src: profile,
-    alt: name
-  }), /*#__PURE__*/_react.default.createElement("p", {
-    className: "name"
-  }, name)), /*#__PURE__*/_react.default.createElement("p", null, comment)), /*#__PURE__*/_react.default.createElement("form", {
+  }, /*#__PURE__*/_react.default.createElement("p", null, comment)), /*#__PURE__*/_react.default.createElement("form", {
     onSubmit: handleClick
   }, /*#__PURE__*/_react.default.createElement("fieldset", null, /*#__PURE__*/_react.default.createElement("input", {
     type: "text",
@@ -34102,7 +34086,7 @@ function AddComment() {
 
 var _default = AddComment;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","../context":"context.js"}],"components/postList.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js"}],"components/postList.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -34244,18 +34228,41 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _react = _interopRequireDefault(require("react"));
+var _react = _interopRequireWildcard(require("react"));
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _context = require("../context");
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 function UserProfile() {
+  var _useContext = (0, _react.useContext)(_context.Context),
+      name = _useContext.name,
+      setName = _useContext.setName,
+      profile = _useContext.profile,
+      setProfile = _useContext.setProfile;
+
+  function editProfile(e) {
+    e.preventDefault(); // setName(e.target.value)
+    // setProfile(e.target.value)
+  }
+
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "user__profile"
-  }, /*#__PURE__*/_react.default.createElement("form", null, /*#__PURE__*/_react.default.createElement("h3", null, "Options"), /*#__PURE__*/_react.default.createElement("fieldset", null, /*#__PURE__*/_react.default.createElement("label", null, "UserName"), /*#__PURE__*/_react.default.createElement("input", {
+  }, /*#__PURE__*/_react.default.createElement("form", {
+    onSubmit: editProfile
+  }, /*#__PURE__*/_react.default.createElement("h3", null, "Options"), /*#__PURE__*/_react.default.createElement("fieldset", null, /*#__PURE__*/_react.default.createElement("label", null, "UserName"), /*#__PURE__*/_react.default.createElement("input", {
     type: "text",
-    placeholder: "Type your username here"
+    placeholder: "Type your username here",
+    name: "name",
+    value: name,
+    onChange: function onChange(e) {
+      return setName(e.target.value);
+    }
   })), /*#__PURE__*/_react.default.createElement("fieldset", null, /*#__PURE__*/_react.default.createElement("label", null, "Profile Picture"), /*#__PURE__*/_react.default.createElement("input", {
     type: "text",
+    name: "profile",
     placeholder: "Paste a url here"
   })), /*#__PURE__*/_react.default.createElement("button", {
     className: "save"
@@ -34264,7 +34271,7 @@ function UserProfile() {
 
 var _default = UserProfile;
 exports.default = _default;
-},{"react":"node_modules/react/index.js"}],"pages/App.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../context":"context.js"}],"pages/App.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
