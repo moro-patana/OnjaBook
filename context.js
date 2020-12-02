@@ -1,46 +1,63 @@
 import React, { useEffect, useState } from "react"
-import PostData from "./post.json"
-
 const Context = React.createContext()
+import PostsData from "./user.json"
+
 
 function ContextProvider({children}) {
     const [posts, setPosts] = useState([])
-    const [profile, setProfile] = useState("https://bit.ly/37m6KRs")
-    const [name, setName] = useState("Hallie Cheyenne")
+    console.log(posts);
+    const [user, setUser] = useState({
+            userName: "Hallie", 
+            id: 11111, 
+            profile:"https://picsum.photos/100"})
 
     useEffect(() => {
-        setPosts(PostData)
+        setPosts(PostsData)
     },[])
-    function toggleLike(id) {
-        const likePost = posts.map(post => {
-            if (post.id === Number(id)) {
-                console.log(post.like);
-                return {
-                    ...post,
-                    like: post.like + 1
-                }
-            }
-            return { ...post };
-        })
-        setPosts(likePost)
-    }
-    function handleSubmit(e) {
-        e.preventDefault();
-        const form = e.target
-        console.log(form.photo.value);
-
-        const newPost = {
-            photo: form.photo.value,
-            legend: form.legend.value,
-            like: 0,
-            id: Date.now()
+    function editProfile(e) {
+        e.preventDefault()
+        const newUserProfile = {
+            id: Date.now(),
+            userName: e.target.name.value,
+            profile: e.target.profile.value
         }
-        console.log(newPost);
-        setPosts([...posts, newPost])
+        setUser(newUserProfile)
         e.target.reset()
+
     }
-     return (
-        <Context.Provider value={{posts, toggleLike, handleSubmit, profile, name}}>
+
+    function addNewPost(e) {
+          e.preventDefault()
+        const newPost = {
+            id: 11111,
+            userProfile: user.profile,
+            userName: user.userName,
+            imgUrl: e.target.photo.value,
+            description: e.target.description.value,
+            comment: [
+                {
+                friend: "Delancy",
+                friendProfile: "http://picsum.photos/10",
+                commentText: "Nice baby"
+                }
+            ]
+        }
+        setPosts([...posts, newPost])
+    }
+    function addComment(e) {
+     e.preventDefault()
+     const newComment = {
+         friend: user.userName,
+         friendProfile: user.profile,
+         commentText: e.target.comment.value
+     }
+     setPosts([...posts, newComment])
+
+    }
+    return (
+        <Context.Provider
+         value={{posts, user, setUser, editProfile, addNewPost, addComment}}
+        >
             {children}
         </Context.Provider>
     )
