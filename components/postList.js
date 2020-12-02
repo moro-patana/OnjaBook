@@ -1,34 +1,47 @@
-import React, { useContext } from "react"
+import React, { useContext } from 'react'
 import { Context } from "../context"
 import AddComment from "./addComment"
 
-function PostList() {
-    const {posts, toggleLike, profile, name} = useContext(Context)
+function postList() {
+    const { posts, user } = useContext(Context)
+    console.log(posts);
     return (
-       <div className="post__container">
-           {posts.map(post => (
-               <article key={post.id} className="post">
-                   <div className="user__profile">
-                       <img className="profile__image" src={post.profile} alt={post.userName}/>
-                       <p className="name">{post.userName}</p>
-                   </div>
-                   <p>{post.legend}</p>
-                   <img src={post.photo} alt={post.legend}/>
-                   <div className="post__like">
-                       <button className="like" onClick={() => toggleLike(post.id)}>Like</button>
-                       <span>{post.like}</span>
-                   </div>
-                   <div className="post__comment">
-                   <div className="user__profile">
-                       <img className="profile__image" src={post.userProfile} alt={post.user}/>
-                       <p className="name">{post.user}</p>
-                   </div>
-                   <p>{post.comment}</p>
-                   </div>
-                   <AddComment/>
-               </article>
-           ))}
-       </div>
+        <div>
+            {posts.map(post => (
+                <article key={post.postId}>
+                    {post.postId === user.id 
+                    ? <header>
+                        <img className="profile" src={user.profile} />
+                        <p>{user.userName}</p>
+                      </header>
+                    : <header>
+                        <img className="profile" src={post.userProfile} />
+                        <p>{post.userName}</p>
+                      </header>}
+                    <div>
+                        <p>{post.description}</p>
+                        <img src={post.imgUrl}/>
+                    </div>
+                    <div>
+                        <button>Like</button>
+                        <span>0</span>
+                    </div>
+                    {post.comment.map(item => (
+                        <div>
+                            <div className="comment">
+                                <img className="profile" src={item.friendProfile}/>
+                                <p className="friend">{item.friend}</p>
+                            </div>
+                            <span className="commentText">{item.commentText}</span>
+                        </div>
+                    ))}
+                    <AddComment/>
+                </article>
+            ))}
+        </div>
     )
 }
-export default PostList;
+
+
+export default postList
+
