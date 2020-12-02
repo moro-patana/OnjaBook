@@ -1,23 +1,10 @@
-import React, { useContext, useState } from "react"
+import React, { useContext }  from "react"
 import { Context } from "../context"
 function AddComment() {
-    const [comment, setComment] = useState("")
-    const {name, profile} = useContext(Context)
-    function handleClick(e) {
-        e.preventDefault()
-        setComment(e.target.comment.value)
-        e.target.reset()
-    }
+    const {addNewComment} = useContext(Context)
     return (
         <div className="add__comment">
-            <div className="comment">
-                <div className="user__profile">
-                        <img className="profile__image" src={profile} alt={name}/>
-                        <p className="name">{name}</p>
-                </div>
-                <p>{comment}</p>
-            </div>
-            <form onSubmit={handleClick}>
+            <form onSubmit={addNewComment}>
                 <fieldset>
                     <input 
                     type="text" 
