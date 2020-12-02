@@ -15,10 +15,15 @@ function Header() {
                  <p className="menu">Add a post</p>
               </Link>
                <Link to="/profile">
-                  <div className="menu profile_menu">
+                  {/* <div className="menu profile_menu">
                       <p className="name">{user.userName}</p>
                       <img src={user.profile} className="profile"/>
+                  </div> */}
+                  <div className="menu profile_menu">
+                      <p className="name">userName</p>
+                      <img src="" className="profile"/>
                   </div>
+
     
               </Link>
     

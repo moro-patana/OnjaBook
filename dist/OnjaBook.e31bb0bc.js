@@ -33914,6 +33914,12 @@ function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.it
 
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
 
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -33933,25 +33939,39 @@ exports.Context = Context;
 function ContextProvider(_ref) {
   var children = _ref.children;
 
-  var _useState = (0, _react.useState)([]),
-      _useState2 = _slicedToArray(_useState, 2),
-      posts = _useState2[0],
-      setPosts = _useState2[1];
+  var _useReducer = (0, _react.useReducer)(function (state, action) {
+    switch (action.type) {
+      case "POST_LIST":
+        return _objectSpread(_objectSpread({}, state), {}, {
+          postList: action.value
+        });
+    }
+  }, {
+    postList: []
+  }),
+      _useReducer2 = _slicedToArray(_useReducer, 2),
+      state = _useReducer2[0],
+      dispatch = _useReducer2[1];
 
-  console.log(posts);
+  (0, _react.useEffect)(function () {
+    dispatch({
+      type: "POST_LIST",
+      value: _post.default
+    });
+  }, []); // const [posts, setPosts] = useState([])
+  // console.log(posts);
 
-  var _useState3 = (0, _react.useState)({
+  var _useState = (0, _react.useState)({
     userName: "Hallie",
     id: 11111,
     profile: "https://picsum.photos/100"
   }),
-      _useState4 = _slicedToArray(_useState3, 2),
-      user = _useState4[0],
-      setUser = _useState4[1];
+      _useState2 = _slicedToArray(_useState, 2),
+      user = _useState2[0],
+      setUser = _useState2[1]; // useEffect(() => {
+  //     setPosts(PostsData)
+  // },[])
 
-  (0, _react.useEffect)(function () {
-    setPosts(_post.default);
-  }, []);
 
   function editProfile(e) {
     e.preventDefault();
@@ -33991,12 +34011,10 @@ function ContextProvider(_ref) {
 
 
   return /*#__PURE__*/_react.default.createElement(Context.Provider, {
+    //  value={{posts, user, setUser, editProfile, addPost}}
     value: {
-      posts: posts,
-      user: user,
-      setUser: setUser,
-      editProfile: editProfile,
-      addPost: addPost
+      state: state,
+      dispatch: dispatch
     }
   }, children);
 }
@@ -34041,8 +34059,8 @@ function Header() {
     className: "menu profile_menu"
   }, /*#__PURE__*/_react.default.createElement("p", {
     className: "name"
-  }, user.userName), /*#__PURE__*/_react.default.createElement("img", {
-    src: user.profile,
+  }, "userName"), /*#__PURE__*/_react.default.createElement("img", {
+    src: "",
     className: "profile"
   })))));
 }
@@ -34104,17 +34122,15 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function postList() {
   var _useContext = (0, _react.useContext)(_context.Context),
-      posts = _useContext.posts,
-      user = _useContext.user;
+      state = _useContext.state,
+      dispatch = _useContext.dispatch;
 
-  console.log(posts);
-  return /*#__PURE__*/_react.default.createElement("div", null, posts.map(function (post) {
+  var postList = state.postList;
+  console.log(postList);
+  return /*#__PURE__*/_react.default.createElement("div", null, postList.map(function (post) {
     return /*#__PURE__*/_react.default.createElement("article", {
       key: post.postId
-    }, post.postId === user.id ? /*#__PURE__*/_react.default.createElement("header", null, /*#__PURE__*/_react.default.createElement("img", {
-      className: "profile",
-      src: user.profile
-    }), /*#__PURE__*/_react.default.createElement("p", null, user.userName)) : /*#__PURE__*/_react.default.createElement("header", null, /*#__PURE__*/_react.default.createElement("img", {
+    }, /*#__PURE__*/_react.default.createElement("header", null, /*#__PURE__*/_react.default.createElement("img", {
       className: "profile",
       src: post.userProfile
     }), /*#__PURE__*/_react.default.createElement("p", null, post.userName)), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", null, post.description), /*#__PURE__*/_react.default.createElement("img", {

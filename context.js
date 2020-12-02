@@ -1,19 +1,33 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useReducer,useState } from "react"
 const Context = React.createContext()
 import PostsData from "./post.json"
 
 
 function ContextProvider({children}) {
-    const [posts, setPosts] = useState([])
-    console.log(posts);
+    const [state, dispatch] = useReducer((state, action) => {
+        switch(action.type) {
+            case "POST_LIST": return {...state, postList: action.value};
+            
+        } 
+    }, {
+        postList: [],
+        
+    });
+    useEffect(() => {
+        dispatch({type: "POST_LIST", value: PostsData})
+    
+     }, [])
+
+    // const [posts, setPosts] = useState([])
+    // console.log(posts);
     const [user, setUser] = useState({
             userName: "Hallie", 
             id: 11111, 
             profile:"https://picsum.photos/100"})
 
-    useEffect(() => {
-        setPosts(PostsData)
-    },[])
+    // useEffect(() => {
+    //     setPosts(PostsData)
+    // },[])
     function editProfile(e) {
         e.preventDefault()
         const newUserProfile = {
@@ -56,7 +70,8 @@ function ContextProvider({children}) {
     // }
     return (
         <Context.Provider
-         value={{posts, user, setUser, editProfile, addPost}}
+        //  value={{posts, user, setUser, editProfile, addPost}}
+        value={{state, dispatch}}
         >
             {children}
         </Context.Provider>

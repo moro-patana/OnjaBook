@@ -3,13 +3,14 @@ import { Context } from "../context"
 import AddComment from "./addComment"
 
 function postList() {
-    const { posts, user } = useContext(Context)
-    console.log(posts);
+    const { state, dispatch} = useContext(Context)
+    const {postList} = state
+    console.log(postList);
     return (
         <div>
-            {posts.map(post => (
+            {postList.map(post => (
                 <article key={post.postId}>
-                    {post.postId === user.id 
+                    {/* {post.postId === user.id 
                     ? <header>
                         <img className="profile" src={user.profile} />
                         <p>{user.userName}</p>
@@ -17,7 +18,11 @@ function postList() {
                     : <header>
                         <img className="profile" src={post.userProfile} />
                         <p>{post.userName}</p>
-                      </header>}
+                      </header>} */}
+                      <header>
+                        <img className="profile" src={post.userProfile} />
+                        <p>{post.userName}</p>
+                      </header>
                     <div>
                         <p>{post.description}</p>
                         <img src={post.imgUrl}/>
