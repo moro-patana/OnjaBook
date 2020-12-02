@@ -13,40 +13,7 @@ img {
     width: 100%;
     border-radius: 10px;
 }
-.post__container {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-gap: 20px;
-}
-.post {
-    background-color: white;
-    border-radius: 15px;
-    padding: 1rem;
-}
-.profile__image {
+.profile {
     width: 50px;
     border-radius: 50%;
-}
-.user__profile {
-    display: flex;
-    padding-bottom: 20px;
-}
-.name {
-    padding-left: 10px;
-}
-.menu__profile,
-.post__like {
-    margin: 0;
-    display: flex;
-}
-.menu__profile span {
-    padding-top: 17px;
-    padding-right: 20px;
-}
-.post__like {
-    padding-top: 20px;
-    padding-bottom: 20px;
-}
-.post__like span {
-    padding-left: 20px;
 }
