@@ -4,7 +4,7 @@ function AddComment() {
     const {addNewComment} = useContext(Context)
     return (
         <div className="add__comment">
-            <form onSubmit={addNewComment}>
+            <form>
                 <fieldset>
                     <input 
                     type="text" 
