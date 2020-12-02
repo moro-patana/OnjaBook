@@ -2,8 +2,8 @@ import React, { useContext } from "react"
 import { Link } from "react-router-dom"
 import {Context } from "../context"
 function Header() {
-    const {profile, name} = useContext(Context)
-    return (
+    const {posts, user} = useContext(Context)
+     return (
         <div className="page__heading">
           <h1>OnjaBook</h1>
           <div className="page__menu">
@@ -15,10 +15,11 @@ function Header() {
                  <p className="menu">Add a post</p>
               </Link>
                <Link to="/profile">
-                  <p className="menu menu__profile">
-                      <span>{name}</span>
-                      <img className="profile__image" src={profile} alt={name}/>
-                  </p>
+                  <div className="menu profile_menu">
+                      <p className="name">{user.userName}</p>
+                      <img src={user.profile} className="profile"/>
+                  </div>
+    
               </Link>
     
           </div>
