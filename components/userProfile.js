@@ -22,7 +22,6 @@ export default function UserProfile() {
 	function handleNewOptions(e) {
 		e.preventDefault();
 		dispatch({ type: 'UPDATE_CURRENT_USER', userName, profilePictureUrl });
-		alert('Profile updated successfully');
 	}
 	return (
 		<div>

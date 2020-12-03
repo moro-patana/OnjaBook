@@ -36279,7 +36279,6 @@ function UserProfile() {
       userName: userName,
       profilePictureUrl: profilePictureUrl
     });
-    alert('Profile updated successfully');
   }
 
   return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h2", null, "Profile Options"), /*#__PURE__*/_react.default.createElement("form", {
