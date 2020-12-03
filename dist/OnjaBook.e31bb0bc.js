@@ -36122,7 +36122,7 @@ function AddPost() {
     var form = e.target;
     var newPost = {
       postId: Date.now(),
-      date: new Date(),
+      date: Date.now(),
       postTextContent: postContent,
       userId: currentUser,
       imgUrl: postImage,
@@ -36137,7 +36137,6 @@ function AddPost() {
       newPost: newPost
     });
     resetForm();
-    alert('Post added.');
   }
 
   function resetForm() {
@@ -36150,6 +36149,7 @@ function AddPost() {
   }, /*#__PURE__*/_react.default.createElement("label", null, "New post content:"), /*#__PURE__*/_react.default.createElement("textarea", {
     placeholder: "Say what's on your mind...",
     value: postContent,
+    name: "postContent",
     onChange: function onChange(e) {
       return setPostContent(e.target.value);
     },

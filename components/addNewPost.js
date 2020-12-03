@@ -23,7 +23,7 @@ export default function AddPost() {
 		const form = e.target;
 		const newPost = {
 			postId: Date.now(),
-			date: new Date(),
+			date: Date.now(),
 			postTextContent: postContent,
 			userId: currentUser,
 			imgUrl: postImage,
@@ -33,7 +33,6 @@ export default function AddPost() {
 		console.log({ newPost });
 		dispatch({ type: 'ADD_NEW_POST', newPost: newPost });
 		resetForm();
-		alert('Post added.');
 	}
 
 	function resetForm() {
@@ -49,6 +48,7 @@ export default function AddPost() {
 				<textarea
 					placeholder="Say what's on your mind..."
 					value={postContent}
+					name="postContent"
 					onChange={e => setPostContent(e.target.value)}
 					required
 				/>
