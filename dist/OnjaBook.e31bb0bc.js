@@ -36186,11 +36186,25 @@ function Feed() {
       dispatch = _useContext.dispatch;
 
   var posts = state.posts,
-      loading = state.loading;
+      loading = state.loading,
+      users = state.users,
+      currentUser = state.currentUser;
+  var currentUserObj = users.find(function (user) {
+    return user.userId === currentUser;
+  });
   return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h2", null, "Feed"), loading && /*#__PURE__*/_react.default.createElement("p", null, "Loading..."), !loading && posts && /*#__PURE__*/_react.default.createElement("div", null, posts.map(function (post) {
     return /*#__PURE__*/_react.default.createElement("div", {
       key: post.postId
-    }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", null, post.postTextContent), /*#__PURE__*/_react.default.createElement("img", {
+    }, /*#__PURE__*/_react.default.createElement("div", {
+      className: "post_heading"
+    }, /*#__PURE__*/_react.default.createElement("div", {
+      className: "user"
+    }, /*#__PURE__*/_react.default.createElement("img", {
+      className: "profile",
+      src: currentUserObj.profilePictureUrl
+    }), /*#__PURE__*/_react.default.createElement("p", {
+      className: "name"
+    }, currentUserObj.userName)), /*#__PURE__*/_react.default.createElement("p", null, post.date)), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", null, post.postTextContent), /*#__PURE__*/_react.default.createElement("img", {
       src: post.imgUrl
     })), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("button", null, "Like")), /*#__PURE__*/_react.default.createElement("div", null, post.comments.map(function (comment) {
       return /*#__PURE__*/_react.default.createElement("p", {

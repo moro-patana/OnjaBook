@@ -13,9 +13,22 @@ img {
     width: 100%;
     border-radius: 10px;
 }
+.post_heading {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.user {
+    display: flex;
+}
 .profile {
     width: 50px;
     border-radius: 50%;
 }
+.name {
+    margin: 0;
+    padding: 1rem;
+}
+
 
 /*# sourceMappingURL=/OnjaBook.9ad09f98.css.map */
