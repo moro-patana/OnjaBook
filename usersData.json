@@ -1,12 +1,12 @@
 [
     {
-        "userId": "121212",
+        "userId": "1",
         "userName": "Loïc",
         "profilePictureUrl": "https://picsum.photos/100",
         "birthDate": "13/09/1991"
     },
     {
-        "userId": "1212222",
+        "userId": "2",
         "userName": "Shaun",
         "profilePictureUrl": "https://picsum.photos/100",
         "birthDate": "13/09/1991"

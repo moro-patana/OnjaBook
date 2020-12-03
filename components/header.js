@@ -1,39 +1,45 @@
-import React, { useContext } from "react"
-import { Link } from "react-router-dom"
+import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 import { Context } from "../context"
-function Header() {
-    const { state, dispatch } = useContext(Context)
-    const { users } = state
-    const getUser = users.map((user, index) => {
-        if (index === 0) {
-            return <div>
-                <p>
-                    {user.userName}
-                </p>
-                <img className="profile" src={user.profilePictureUrl} alt={user.userName} />
-            </div>
-        }
-    })
 
+const NavStyles = styled.nav`
+	ul  {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+`;
 
-    return (
-        <div className="page__heading">
-            <h1>OnjaBook</h1>
-            <div className="page__menu">
-                <Link to="/">
-                    <p className="menu">Feed</p>
-                </Link>
-
-                <Link to="/addPost">
-                    <p className="menu">Add a post</p>
-                </Link>
-                <Link to="/profile">
-                    {getUser}
-                </Link>
-
-            </div>
-        </div>
-
-    )
+export default function Header() {
+	const {state, dispatch} = useContext(Context)
+	const {users, currentUser} = state
+	const currentUserObj = users.find(user => user.userId === currentUser)
+	return (
+		<div>
+			<h1>Onjabook</h1>
+			<NavStyles>
+				<ul>
+					<li>
+						<Link to="/">Feed</Link>
+					</li>
+					<li>
+						<Link to="/add">Add a post</Link>
+					</li>
+					<li>
+						{currentUserObj && (
+							<Link to="/options">
+								<span>{currentUserObj.userName}</span>
+								<img src={currentUserObj.profilePictureUrl}/>
+							</Link>
+						)}
+					</li>
+				</ul>
+			</NavStyles>
+		</div>
+	);
 }
-export default Header;

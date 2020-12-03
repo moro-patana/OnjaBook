@@ -1,27 +1,67 @@
-import React, { createContext, useReducer,useEffect } from 'react';
-import PostData from "./post.json"
-import UserData from "./user.json"
+import React, { createContext, useReducer, useEffect } from 'react';
+import postsData from './postsData.json';
+import usersData from './usersData.json';
+
 const Context = createContext();
+
 function ContextProvider({ children }) {
 	const [state, dispatch] = useReducer(
 		(state, action) => {
 			switch (action.type) {
-                case "SET_POST": 
-                 return {...state, posts: action.value}
-                case "SET_USERS": 
-                return {...state, users: action.value}
+				case 'LOAD_JSON_DATA': {
+					return {
+						...state,
+						loading: false,
+						posts: postsData,
+						users: usersData,
+					};
+				}
+				case 'ADD_NEW_POST': {
+					return {
+						...state,
+						posts: [...state.posts, action.newPost],
+					};
+				}
+				case 'UPDATE_CURRENT_USER': {
+					const newUsersArray = state.users.map(user => {
+						if (user.userId === state.currentUser) {
+							// update the user and return it
+							return {
+								...user,
+								userName: action.userName,
+								profilePictureUrl: action.profilePictureUrl,
+							};
+						}
+						return user;
+					});
+					return {
+						...state,
+						users: newUsersArray,
+					};
+				}
+				default: {
+					console.error('No actions defined for', action.type);
+					break;
+				}
 			}
+			return state;
 		},
 		{
+			loading: true,
 			posts: [],
 			users: [],
-			// userLoggedIn: '',
+			currentUser: '1',
 		}
-    );
-    useEffect(() => {
-        dispatch({type:"SET_POST", value: PostData})
-        dispatch({type:"SET_USERS", value: UserData})
-    }, [])
+	);
+
+	useEffect(() => {
+		setTimeout(() => {
+			'';
+			dispatch({ type: 'LOAD_JSON_DATA' });
+		}, 1000);
+	}, []);
+
 	return <Context.Provider value={{ state, dispatch }}>{children}</Context.Provider>;
 }
+
 export { Context, ContextProvider };

@@ -1,52 +1,67 @@
-import React, { useContext, useState } from "react"
-import { Context } from "../context"
+import React, { useState, useContext } from 'react';
+import { Context } from '../context';
+import styled from 'styled-components';
 
-function AddNewPost() {
-    const {state, dispatch} = useContext(Context)
-    const { postList, user } = state;
- 
-    function handleSubmit(e) {
-      e.preventDefault();
-        console.log(e.target);
-      const newPost = {
-          id: 11111,
-          userProfile: user.profile,
-          userName: user.userName,
-          imgUrl: e.target.photo.value,
-          description: e.target.description.value,
-          likes: 0,
-          comment: [
-              {
-              friend: "Delancy",
-              friendProfile: "http://picsum.photos/10",
-              commentText: "Nice baby"
-              }
-          ]
-      }
-      dispatch({type:"ADD_NEW_POST", postList: [...postList, newPost]})
-  }
-    
-    return (
-     <div className="form__group">
-         <form onSubmit={handleSubmit}>
-          <fieldset>
-              <label>New Post:</label>
-              <textarea 
-              name="description"
-              placeholder="What's in your mind"
-              />
-          </fieldset>
-          <fieldset>
-              <label>Picture url:</label>
-              <input 
-              type="text" 
-              name="photo"
-              placeholder="Type Url"
-              />
-          </fieldset>
-          <button className="save">Save</button>
-         </form>
-     </div>
-    )
+const FormStyle = styled.form`
+	display: grid;
+	gap: 10px;
+	grid-template-columns: 200px;
+	textarea {
+		height: 100px;
+	}
+`;
+
+export default function AddPost() {
+	const [postContent, setPostContent] = useState('');
+	const [postImage, setPostImage] = useState('http://picsum.photos/100');
+
+	const { state, dispatch } = useContext(Context);
+	const { currentUser } = state;
+
+	function handleNewPost(e) {
+		e.preventDefault();
+		const form = e.target;
+		const newPost = {
+			postId: Date.now(),
+			date: new Date(),
+			postTextContent: postContent,
+			userId: currentUser,
+			imgUrl: postImage,
+			likes: [],
+			comments: [],
+		};
+		console.log({ newPost });
+		dispatch({ type: 'ADD_NEW_POST', newPost: newPost });
+		resetForm();
+		alert('Post added.');
+	}
+
+	function resetForm() {
+		setPostContent('');
+		setPostImage('');
+	}
+
+	return (
+		<div>
+			<h2>Add a post</h2>
+			<FormStyle onSubmit={handleNewPost}>
+				<label>New post content:</label>
+				<textarea
+					placeholder="Say what's on your mind..."
+					value={postContent}
+					onChange={e => setPostContent(e.target.value)}
+					required
+				/>
+				<label>New post picture :</label>
+				<input
+					type="text"
+					placeholder="Paste a picture url here"
+					value={postImage}
+					onChange={e => setPostImage(e.target.value)}
+					required
+				/>
+				<button>Post</button>
+			</FormStyle>
+		</div>
+	);
 }
-export default AddNewPost;
