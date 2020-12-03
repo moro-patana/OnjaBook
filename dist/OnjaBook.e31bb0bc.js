@@ -36187,10 +36187,16 @@ function Feed() {
 
   var posts = state.posts,
       loading = state.loading;
-  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h2", null, "Feed"), loading && /*#__PURE__*/_react.default.createElement("p", null, "Loading..."), !loading && posts && /*#__PURE__*/_react.default.createElement("ul", null, posts.map(function (post) {
-    return /*#__PURE__*/_react.default.createElement("li", {
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h2", null, "Feed"), loading && /*#__PURE__*/_react.default.createElement("p", null, "Loading..."), !loading && posts && /*#__PURE__*/_react.default.createElement("div", null, posts.map(function (post) {
+    return /*#__PURE__*/_react.default.createElement("div", {
       key: post.postId
-    }, post.postTextContent);
+    }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", null, post.postTextContent), /*#__PURE__*/_react.default.createElement("img", {
+      src: post.imgUrl
+    })), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("button", null, "Like")), /*#__PURE__*/_react.default.createElement("div", null, post.comments.map(function (comment) {
+      return /*#__PURE__*/_react.default.createElement("p", {
+        key: comment.commentId
+      }, comment.commentTextContent);
+    })));
   })));
 }
 },{"react":"node_modules/react/index.js","../context":"context.js"}],"components/userProfile.js":[function(require,module,exports) {
@@ -36302,6 +36308,16 @@ function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return 
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
+function _templateObject2() {
+  var data = _taggedTemplateLiteral(["\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: space-between;\n\tgap: 15px;\n\talign-items: center;\n\timg {\n\t\twidth: 35px;\n\t\theight: 35px;\n\t\tborder-radius: 50%;\n\t}\n"]);
+
+  _templateObject2 = function _templateObject2() {
+    return data;
+  };
+
+  return data;
+}
+
 function _templateObject() {
   var data = _taggedTemplateLiteral(["\n\tul  {\n\t\tdisplay: flex;\n\t\tflex-direction: row;\n\t\tjustify-content: space-between;\n\t\talign-items: center;\n\t\tlist-style: none;\n\t\tpadding: 0;\n\t\tmargin: 0;\n\t}\n"]);
 
@@ -36315,6 +36331,8 @@ function _templateObject() {
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 var NavStyles = _styledComponents.default.nav(_templateObject());
+
+var ProfileLinkStyles = _styledComponents.default.div(_templateObject2());
 
 function Header() {
   var _useContext = (0, _react.useContext)(_context.Context),
@@ -36332,9 +36350,9 @@ function Header() {
     to: "/add"
   }, "Add a post")), /*#__PURE__*/_react.default.createElement("li", null, currentUserObj && /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
     to: "/options"
-  }, /*#__PURE__*/_react.default.createElement("span", null, currentUserObj.userName), /*#__PURE__*/_react.default.createElement("img", {
+  }, /*#__PURE__*/_react.default.createElement(ProfileLinkStyles, null, /*#__PURE__*/_react.default.createElement("span", null, currentUserObj.userName), /*#__PURE__*/_react.default.createElement("img", {
     src: currentUserObj.profilePictureUrl
-  }))))));
+  })))))));
 }
 },{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js","../context":"context.js"}],"components/App.js":[function(require,module,exports) {
 "use strict";

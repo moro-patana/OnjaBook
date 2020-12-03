@@ -14,6 +14,18 @@ const NavStyles = styled.nav`
 		margin: 0;
 	}
 `;
+const ProfileLinkStyles = styled.div`
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	gap: 15px;
+	align-items: center;
+	img {
+		width: 35px;
+		height: 35px;
+		border-radius: 50%;
+	}
+`;
 
 export default function Header() {
 	const {state, dispatch} = useContext(Context)
@@ -28,13 +40,16 @@ export default function Header() {
 						<Link to="/">Feed</Link>
 					</li>
 					<li>
+
 						<Link to="/add">Add a post</Link>
 					</li>
 					<li>
 						{currentUserObj && (
 							<Link to="/options">
-								<span>{currentUserObj.userName}</span>
-								<img src={currentUserObj.profilePictureUrl}/>
+								<ProfileLinkStyles>
+									<span>{currentUserObj.userName}</span>
+									<img src={currentUserObj.profilePictureUrl}/>
+								</ProfileLinkStyles>
 							</Link>
 						)}
 					</li>
