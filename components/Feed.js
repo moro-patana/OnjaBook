@@ -9,11 +9,24 @@ export default function Feed() {
 			<h2>Feed</h2>
 			{loading && <p>Loading...</p>}
 			{!loading && posts && (
-				<ul>
+				<div>
 					{posts.map(post => (
-						<li key={post.postId}>{post.postTextContent}</li>
+						<div key={post.postId}>
+                            <div>
+                                <p>{post.postTextContent}</p>
+                                <img src={post.imgUrl}/>
+                            </div>
+                            <div>
+                                <button>Like</button>
+                            </div>
+                            <div>
+                                {post.comments.map(comment => (
+                                    <p key={comment.commentId}>{comment.commentTextContent}</p>
+                                ))}
+                            </div>
+                        </div>
 					))}
-				</ul>
+				</div>
 			)}
 		</div>
 	);
