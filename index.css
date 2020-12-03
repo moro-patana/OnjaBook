@@ -13,6 +13,9 @@ img {
     width: 100%;
     border-radius: 10px;
 }
+.user {
+    display: flex;
+}
 .profile {
     width: 50px;
     border-radius: 50%;
