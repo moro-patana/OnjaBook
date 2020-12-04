@@ -14,7 +14,7 @@ export default function Feed() {
 			{!loading && posts && (
 				<div>
 					{posts.map(post => (
-						<div key={post.postId}>
+						<div key={post.postId}  className="post_card">
                              <div className="post_heading">
                                  <div className="user">
                                     <img className="profile" src={currentUserObj.profilePictureUrl}/>
