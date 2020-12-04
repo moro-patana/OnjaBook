@@ -33904,7 +33904,7 @@ module.exports = [{
   "date": 1606974871743,
   "postTextContent": "This is the description",
   "userId": "1",
-  "imgUrl": "http://picsum.photos/100",
+  "imgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHa0f6hcO2LBO3QYUG6ADk2heesKrYchQCzw&usqp=CAU",
   "likes": [{
     "likeId": "1",
     "userId": "1"
@@ -33928,7 +33928,7 @@ module.exports = [{
   "date": 1606974894366,
   "postTextContent": "This is the description",
   "userId": "2",
-  "imgUrl": "http://picsum.photos/100",
+  "imgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSA0R7KmXODRogpb3WKploaDO4OeakhS9AeZw&usqp=CAU",
   "likes": [{
     "likeId": "1",
     "userId": "1"
@@ -33951,13 +33951,13 @@ module.exports = [{
 },{}],"usersData.json":[function(require,module,exports) {
 module.exports = [{
   "userId": "1",
-  "userName": "Loïc",
-  "profilePictureUrl": "https://picsum.photos/100",
+  "userName": "Hallie Cheyenne",
+  "profilePictureUrl": "https://bit.ly/3g6RR9y",
   "birthDate": "13/09/1991"
 }, {
   "userId": "2",
-  "userName": "Shaun",
-  "profilePictureUrl": "https://picsum.photos/100",
+  "userName": "Delancy Smith",
+  "profilePictureUrl": "https://bit.ly/39Oflz4",
   "birthDate": "13/09/1991"
 }];
 },{}],"context.js":[function(require,module,exports) {
@@ -34051,13 +34051,17 @@ function ContextProvider(_ref) {
 
       case "ADD_NEW_COMMENT":
         {
-          var mapPost = posts.map(function (post) {
-            return post.comments.map(function (comment) {
-              return comment.commentId;
-            });
+          var mapPost = state.posts.map(function (post) {
+            if (post.postId === action.id) {
+              return _objectSpread(_objectSpread({}, post), {}, {
+                comments: [].concat(_toConsumableArray(post.comments), [action.comment])
+              });
+            }
+
+            return post;
           });
-          return _objectSpread(_objectSpread({}, post), {}, {
-            comments: [].concat(_toConsumableArray(comments), [action.value])
+          return _objectSpread(_objectSpread({}, state), {}, {
+            posts: mapPost
           });
         }
 
@@ -34073,6 +34077,8 @@ function ContextProvider(_ref) {
     loading: true,
     posts: [],
     users: [],
+    comments: [],
+    comment: "",
     currentUser: '1'
   }),
       _useReducer2 = _slicedToArray(_useReducer, 2),
@@ -36219,9 +36225,12 @@ function AddComment() {
       date: 1606974894366,
       commentTextContent: e.target.value
     };
+
+    posts: [].concat(_toConsumableArray(posts), [newComment]);
+
     dispatch({
       type: "ADD_NEW_COMMENT",
-      postList: [].concat(_toConsumableArray(posts), [newComment])
+      postList: posts
     });
   }
 
@@ -36275,7 +36284,8 @@ function Feed() {
   });
   return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h2", null, "Feed"), loading && /*#__PURE__*/_react.default.createElement("p", null, "Loading..."), !loading && posts && /*#__PURE__*/_react.default.createElement("div", null, posts.map(function (post) {
     return /*#__PURE__*/_react.default.createElement("div", {
-      key: post.postId
+      key: post.postId,
+      className: "post_card"
     }, /*#__PURE__*/_react.default.createElement("div", {
       className: "post_heading"
     }, /*#__PURE__*/_react.default.createElement("div", {
