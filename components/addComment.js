@@ -1,7 +1,5 @@
-import React, { useContext }  from "react"
-import { Context } from "../context"
+import React from "react"
 function AddComment() {
-    const {addNewComment} = useContext(Context)
     return (
         <div className="add__comment">
             <form>
