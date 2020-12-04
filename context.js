@@ -39,21 +39,22 @@ function ContextProvider({ children }) {
 						users: newUsersArray,
 					};
 				}
-				case "ADD_NEW_COMMENT": {
-					const mapPost = state.posts.map(post => {
-						if(post.postId === action.id) {
+				case "ADD_COMMENT_TO_POST": {
+					const newPosts = state.posts.map(post => {
+						if(post.postId === action.postId) {
 							return {
 								...post,
-								comments: [...post.comments, action.comment]
+								comments: [...post.comments, action.newCommentText]
 							}
 						}
-						return post;
+						return post
 					})
 					return {
 						...state,
-						posts: mapPost
+						posts: newPosts
 					}
 				}
+
 				default: {
 					console.error('No actions defined for', action.type);
 					break;

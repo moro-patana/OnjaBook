@@ -47,7 +47,7 @@ export default function Feed() {
                                     )
                                 })}
                             </div>
-                            <AddComment/>
+                            <AddComment post={post}/>
                         </div>
 					))}
 				</div>

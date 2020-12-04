@@ -34049,19 +34049,19 @@ function ContextProvider(_ref) {
           });
         }
 
-      case "ADD_NEW_COMMENT":
+      case "ADD_COMMENT_TO_POST":
         {
-          var mapPost = state.posts.map(function (post) {
-            if (post.postId === action.id) {
+          var newPosts = state.posts.map(function (post) {
+            if (post.postId === action.postId) {
               return _objectSpread(_objectSpread({}, post), {}, {
-                comments: [].concat(_toConsumableArray(post.comments), [action.comment])
+                comments: [].concat(_toConsumableArray(post.comments), [action.newCommentText])
               });
             }
 
             return post;
           });
           return _objectSpread(_objectSpread({}, state), {}, {
-            posts: mapPost
+            posts: newPosts
           });
         }
 
@@ -36198,50 +36198,59 @@ function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return 
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 
-function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
-
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
-function AddComment() {
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function AddComment(_ref) {
+  var post = _ref.post;
+
   var _useContext = (0, _react.useContext)(_context.Context),
       state = _useContext.state,
       dispatch = _useContext.dispatch;
 
-  var posts = state.posts;
+  var currentUser = state.currentUser;
 
-  function comment(e) {
+  var _useState = (0, _react.useState)(""),
+      _useState2 = _slicedToArray(_useState, 2),
+      newComment = _useState2[0],
+      setNewComment = _useState2[1];
+
+  function addNewComment(e) {
     e.preventDefault();
-    var newComment = {
-      commentId: "3",
-      userId: "1",
-      date: 1606974894366,
-      commentTextContent: e.target.value
+    var newCommentText = {
+      commentId: Date.now(),
+      userId: currentUser,
+      date: Date.now(),
+      commentTextContent: newComment
     };
-
-    posts: [].concat(_toConsumableArray(posts), [newComment]);
-
     dispatch({
-      type: "ADD_NEW_COMMENT",
-      postList: posts
+      type: "ADD_COMMENT_TO_POST",
+      postId: post.postId,
+      newCommentText: newCommentText
     });
+    setNewComment('');
   }
 
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "add__comment"
   }, /*#__PURE__*/_react.default.createElement("form", {
-    onSubmit: comment
+    onSubmit: addNewComment
   }, /*#__PURE__*/_react.default.createElement("fieldset", null, /*#__PURE__*/_react.default.createElement("input", {
     type: "text",
     placeholder: "Add a comment",
-    name: "comment"
+    value: newComment,
+    onChange: function onChange(e) {
+      return setNewComment(e.target.value);
+    }
   }), /*#__PURE__*/_react.default.createElement("button", {
     className: "post"
   }, "Post"))));
@@ -36312,7 +36321,9 @@ function Feed() {
         src: find.profilePictureUrl,
         alt: find.userName
       }), /*#__PURE__*/_react.default.createElement("span", null, find.userName)), /*#__PURE__*/_react.default.createElement("span", null, comment.date)), /*#__PURE__*/_react.default.createElement("p", null, comment.commentTextContent));
-    })), /*#__PURE__*/_react.default.createElement(_addComment.default, null));
+    })), /*#__PURE__*/_react.default.createElement(_addComment.default, {
+      post: post
+    }));
   })));
 }
 },{"react":"node_modules/react/index.js","../context":"context.js","../components/addComment":"components/addComment.js"}],"components/userProfile.js":[function(require,module,exports) {
