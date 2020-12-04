@@ -1,12 +1,6 @@
 import React, { useContext } from 'react';
-import styled from 'styled-components';
 
 import { Context } from "../context";
-
-const PostLikesStyles = styled.div`
-	display: flex;
-	gap: 10px;
-`;
 
 export default function Likes({ post }) {
 	const { state, dispatch } = useContext(Context);
@@ -29,7 +23,7 @@ export default function Likes({ post }) {
 	}
 
 	return (
-		<PostLikesStyles>
+		<div>
 			{checkIfLikedOrNot() ? (
 				<button onClick={unlikePost}>UnLike</button>
 			) : (
@@ -37,6 +31,6 @@ export default function Likes({ post }) {
 			)}
 
 			<span>{post.likes.length}</span>
-		</PostLikesStyles>
+		</div>
 	);
 }

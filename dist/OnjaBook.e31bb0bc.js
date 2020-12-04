@@ -36304,29 +36304,11 @@ exports.default = Likes;
 
 var _react = _interopRequireWildcard(require("react"));
 
-var _styledComponents = _interopRequireDefault(require("styled-components"));
-
 var _context = require("../context");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-
-function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n\tdisplay: flex;\n\tgap: 10px;\n"]);
-
-  _templateObject = function _templateObject() {
-    return data;
-  };
-
-  return data;
-}
-
-function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
-
-var PostLikesStyles = _styledComponents.default.div(_templateObject());
 
 function Likes(_ref) {
   var post = _ref.post;
@@ -36362,13 +36344,13 @@ function Likes(_ref) {
     });
   }
 
-  return /*#__PURE__*/_react.default.createElement(PostLikesStyles, null, checkIfLikedOrNot() ? /*#__PURE__*/_react.default.createElement("button", {
+  return /*#__PURE__*/_react.default.createElement("div", null, checkIfLikedOrNot() ? /*#__PURE__*/_react.default.createElement("button", {
     onClick: unlikePost
   }, "UnLike") : /*#__PURE__*/_react.default.createElement("button", {
     onClick: likePost
   }, "Like"), /*#__PURE__*/_react.default.createElement("span", null, post.likes.length));
 }
-},{"react":"node_modules/react/index.js","styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js","../context":"context.js"}],"components/Feed.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../context":"context.js"}],"components/Feed.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -36416,7 +36398,7 @@ function Feed() {
       src: currentUserObj.profilePictureUrl
     }), /*#__PURE__*/_react.default.createElement("p", {
       className: "name"
-    }, currentUserObj.userName)), /*#__PURE__*/_react.default.createElement("p", null, post.date)), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", null, post.postTextContent), /*#__PURE__*/_react.default.createElement("img", {
+    }, currentUserObj.userName)), /*#__PURE__*/_react.default.createElement("p", null, new Date(post.date).toLocaleDateString())), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", null, post.postTextContent), /*#__PURE__*/_react.default.createElement("img", {
       src: post.imgUrl
     })), /*#__PURE__*/_react.default.createElement(_Likes.default, {
       post: post
@@ -36434,7 +36416,7 @@ function Feed() {
         className: "profile",
         src: find.profilePictureUrl,
         alt: find.userName
-      }), /*#__PURE__*/_react.default.createElement("span", null, find.userName)), /*#__PURE__*/_react.default.createElement("span", null, comment.date)), /*#__PURE__*/_react.default.createElement("p", null, comment.commentTextContent));
+      }), /*#__PURE__*/_react.default.createElement("span", null, find.userName)), /*#__PURE__*/_react.default.createElement("span", null, new Date(comment.date).toLocaleDateString())), /*#__PURE__*/_react.default.createElement("p", null, comment.commentTextContent));
     })), /*#__PURE__*/_react.default.createElement(_addComment.default, {
       post: post
     }));

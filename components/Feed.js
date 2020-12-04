@@ -21,7 +21,7 @@ export default function Feed() {
                                     <img className="profile" src={currentUserObj.profilePictureUrl}/>
                                     <p className="name">{currentUserObj.userName}</p>
                                   </div>
-                                  <p>{post.date}</p>
+                                  <p>{new Date(post.date).toLocaleDateString()}</p>
                              </div>
                             <div>
                                 <p>{post.postTextContent}</p>
@@ -39,7 +39,7 @@ export default function Feed() {
                                                     <img className="profile" src={find.profilePictureUrl} alt={find.userName}/>
                                                     <span>{find.userName}</span>
                                                 </div>
-                                                <span>{comment.date}</span>
+                                                <span>{new Date(comment.date).toLocaleDateString()}</span>
                                             </div>
                                             <p>{comment.commentTextContent}</p>
                                         </div>
