@@ -36,3 +36,21 @@ img {
     border-radius: 12px;
     margin-bottom: 20px;
 }
+fieldset {
+    border: none;
+    background-color: gainsboro;
+    padding: 30px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+fieldset > input,
+fieldset > button {
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+}
+fieldset > button {
+    background-color: white;
+}
