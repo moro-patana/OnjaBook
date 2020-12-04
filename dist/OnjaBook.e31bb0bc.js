@@ -34049,6 +34049,18 @@ function ContextProvider(_ref) {
           });
         }
 
+      case "ADD_NEW_COMMENT":
+        {
+          var mapPost = posts.map(function (post) {
+            return post.comments.map(function (comment) {
+              return comment.commentId;
+            });
+          });
+          return _objectSpread(_objectSpread({}, post), {}, {
+            comments: [].concat(_toConsumableArray(comments), [action.value])
+          });
+        }
+
       default:
         {
           console.error('No actions defined for', action.type);
@@ -36164,7 +36176,71 @@ function AddPost() {
     required: true
   }), /*#__PURE__*/_react.default.createElement("button", null, "Post")));
 }
-},{"react":"node_modules/react/index.js","../context":"context.js","styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js"}],"components/Feed.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../context":"context.js","styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js"}],"components/addComment.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _context = require("../context");
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function AddComment() {
+  var _useContext = (0, _react.useContext)(_context.Context),
+      state = _useContext.state,
+      dispatch = _useContext.dispatch;
+
+  var posts = state.posts;
+
+  function comment(e) {
+    e.preventDefault();
+    var newComment = {
+      commentId: "3",
+      userId: "1",
+      date: 1606974894366,
+      commentTextContent: e.target.value
+    };
+    dispatch({
+      type: "ADD_NEW_COMMENT",
+      postList: [].concat(_toConsumableArray(posts), [newComment])
+    });
+  }
+
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "add__comment"
+  }, /*#__PURE__*/_react.default.createElement("form", {
+    onSubmit: comment
+  }, /*#__PURE__*/_react.default.createElement("fieldset", null, /*#__PURE__*/_react.default.createElement("input", {
+    type: "text",
+    placeholder: "Add a comment",
+    name: "comment"
+  }), /*#__PURE__*/_react.default.createElement("button", {
+    className: "post"
+  }, "Post"))));
+}
+
+var _default = AddComment;
+exports.default = _default;
+},{"react":"node_modules/react/index.js","../context":"context.js"}],"components/Feed.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -36175,6 +36251,10 @@ exports.default = Feed;
 var _react = _interopRequireWildcard(require("react"));
 
 var _context = require("../context");
+
+var _addComment = _interopRequireDefault(require("../components/addComment"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
 
@@ -36222,10 +36302,10 @@ function Feed() {
         src: find.profilePictureUrl,
         alt: find.userName
       }), /*#__PURE__*/_react.default.createElement("span", null, find.userName)), /*#__PURE__*/_react.default.createElement("span", null, comment.date)), /*#__PURE__*/_react.default.createElement("p", null, comment.commentTextContent));
-    })));
+    })), /*#__PURE__*/_react.default.createElement(_addComment.default, null));
   })));
 }
-},{"react":"node_modules/react/index.js","../context":"context.js"}],"components/userProfile.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../context":"context.js","../components/addComment":"components/addComment.js"}],"components/userProfile.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
