@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { Context } from '../context';
+import AddComment from "../components/addComment"
 
 export default function Feed() {
 	const { state, dispatch } = useContext(Context);
@@ -46,6 +47,7 @@ export default function Feed() {
                                     )
                                 })}
                             </div>
+                            <AddComment/>
                         </div>
 					))}
 				</div>
