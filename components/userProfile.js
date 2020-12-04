@@ -26,7 +26,7 @@ export default function UserProfile() {
 	return (
 		<div>
 			<h2>Profile Options</h2>
-			<form onSubmit={handleNewOptions}>
+			<form onSubmit={handleNewOptions} className="profile-post">
 				<input
 					type="text"
 					value={userName}
@@ -39,7 +39,7 @@ export default function UserProfile() {
 					onChange={e => setProfilePictureUrl(e.target.value)}
 					required
 				/>
-				<button>Save</button>
+				<button className="save">Save</button>
 			</form>
 		</div>
 	);
