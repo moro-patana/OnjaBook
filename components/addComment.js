@@ -2,7 +2,7 @@ import React, {useContext} from "react"
 import { Context } from "../context"
 function AddComment() {
     const {state, dispatch} = useContext(Context)
-    const {posts} = state
+    let {posts} = state
     function comment(e) {
         e.preventDefault()
         const newComment = {
@@ -12,7 +12,8 @@ function AddComment() {
                 commentTextContent: e.target.value
 
         }
-        dispatch({type:"ADD_NEW_COMMENT", postList: [...posts, newComment] })
+        posts: [...posts, newComment]
+        dispatch({type:"ADD_NEW_COMMENT", postList: posts})
     }
 
     return (
