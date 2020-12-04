@@ -25,7 +25,7 @@ export default function Feed() {
                              </div>
                             <div>
                                 <p>{post.postTextContent}</p>
-                                <img src={post.imgUrl}/>
+                                <img className="post-image" src={post.imgUrl}/>
                             </div>
                             <Likes post={post}/>
                             <div className="comment-container">

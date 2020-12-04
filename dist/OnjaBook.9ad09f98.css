@@ -67,6 +67,32 @@ fieldset > button {
 .comment-container {
     margin-top: 1rem;
 }
+.profile-post {
+    display: flex;
+    flex-direction: column;
+    background-color: aquamarine;
+    padding: 1rem;
+    border-radius: 12px;
+}
+.save {
+    padding: 10px;
+    border: none;
+    width: 60px;
+    border-radius: 10px;
+    background-color: white;
+}
+.profile-post input {
+    margin-bottom: 1rem;
+    padding: 10px;
+    border: none;
+    border-radius: 12px;
+}
+@media (min-width: 1114px) {
+    body {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+}
 
 
 /*# sourceMappingURL=/OnjaBook.9ad09f98.css.map */

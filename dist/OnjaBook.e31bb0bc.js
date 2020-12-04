@@ -36399,6 +36399,7 @@ function Feed() {
     }), /*#__PURE__*/_react.default.createElement("p", {
       className: "name"
     }, currentUserObj.userName)), /*#__PURE__*/_react.default.createElement("p", null, new Date(post.date).toLocaleDateString())), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", null, post.postTextContent), /*#__PURE__*/_react.default.createElement("img", {
+      className: "post-image",
       src: post.imgUrl
     })), /*#__PURE__*/_react.default.createElement(_Likes.default, {
       post: post
@@ -36496,7 +36497,8 @@ function UserProfile() {
   }
 
   return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h2", null, "Profile Options"), /*#__PURE__*/_react.default.createElement("form", {
-    onSubmit: handleNewOptions
+    onSubmit: handleNewOptions,
+    className: "profile-post"
   }, /*#__PURE__*/_react.default.createElement("input", {
     type: "text",
     value: userName,
@@ -36511,7 +36513,9 @@ function UserProfile() {
       return setProfilePictureUrl(e.target.value);
     },
     required: true
-  }), /*#__PURE__*/_react.default.createElement("button", null, "Save")));
+  }), /*#__PURE__*/_react.default.createElement("button", {
+    className: "save"
+  }, "Save")));
 }
 },{"react":"node_modules/react/index.js","../context":"context.js"}],"components/header.js":[function(require,module,exports) {
 "use strict";
