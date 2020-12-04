@@ -54,6 +54,12 @@ fieldset > button {
 fieldset > button {
     background-color: white;
 }
+.post-comment {
+    background-color: skyblue;
+    border-radius: 12px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
 
 
 /*# sourceMappingURL=/OnjaBook.9ad09f98.css.map */

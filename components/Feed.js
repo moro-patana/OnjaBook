@@ -13,7 +13,7 @@ export default function Feed() {
 			<h2>Feed</h2>
 			{loading && <p>Loading...</p>}
 			{!loading && posts && (
-				<div>
+				<article>
 					{posts.map(post => (
 						<div key={post.postId}  className="post_card">
                              <div className="post_heading">
@@ -33,7 +33,7 @@ export default function Feed() {
                                     const find = users.find(user => user.userId === comment.userId);
                                     
                                     return (
-                                        <div key={comment.commentId}>
+                                        <div key={comment.commentId} className="post-comment">
                                             <div className="post_heading">
                                                 <div className="user_profile">
                                                     <img className="profile" src={find.profilePictureUrl} alt={find.userName}/>
@@ -41,7 +41,7 @@ export default function Feed() {
                                                 </div>
                                                 <span>{new Date(comment.date).toLocaleDateString()}</span>
                                             </div>
-                                            <p>{comment.commentTextContent}</p>
+                                            <p className="comment">{comment.commentTextContent}</p>
                                         </div>
                                     )
                                 })}
@@ -49,7 +49,7 @@ export default function Feed() {
                             <AddComment post={post}/>
                         </div>
 					))}
-				</div>
+				</article>
 			)}
 		</div>
 	);

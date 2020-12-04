@@ -36385,7 +36385,7 @@ function Feed() {
   var currentUserObj = users.find(function (user) {
     return user.userId === currentUser;
   });
-  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h2", null, "Feed"), loading && /*#__PURE__*/_react.default.createElement("p", null, "Loading..."), !loading && posts && /*#__PURE__*/_react.default.createElement("div", null, posts.map(function (post) {
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h2", null, "Feed"), loading && /*#__PURE__*/_react.default.createElement("p", null, "Loading..."), !loading && posts && /*#__PURE__*/_react.default.createElement("article", null, posts.map(function (post) {
     return /*#__PURE__*/_react.default.createElement("div", {
       key: post.postId,
       className: "post_card"
@@ -36407,7 +36407,8 @@ function Feed() {
         return user.userId === comment.userId;
       });
       return /*#__PURE__*/_react.default.createElement("div", {
-        key: comment.commentId
+        key: comment.commentId,
+        className: "post-comment"
       }, /*#__PURE__*/_react.default.createElement("div", {
         className: "post_heading"
       }, /*#__PURE__*/_react.default.createElement("div", {
@@ -36416,7 +36417,9 @@ function Feed() {
         className: "profile",
         src: find.profilePictureUrl,
         alt: find.userName
-      }), /*#__PURE__*/_react.default.createElement("span", null, find.userName)), /*#__PURE__*/_react.default.createElement("span", null, new Date(comment.date).toLocaleDateString())), /*#__PURE__*/_react.default.createElement("p", null, comment.commentTextContent));
+      }), /*#__PURE__*/_react.default.createElement("span", null, find.userName)), /*#__PURE__*/_react.default.createElement("span", null, new Date(comment.date).toLocaleDateString())), /*#__PURE__*/_react.default.createElement("p", {
+        className: "comment"
+      }, comment.commentTextContent));
     })), /*#__PURE__*/_react.default.createElement(_addComment.default, {
       post: post
     }));
