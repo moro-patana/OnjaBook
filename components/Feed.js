@@ -28,7 +28,7 @@ export default function Feed() {
                                 <img src={post.imgUrl}/>
                             </div>
                             <Likes post={post}/>
-                            <div>
+                            <div className="comment-container">
                                 {post.comments.map(comment => {
                                     const find = users.find(user => user.userId === comment.userId);
                                     

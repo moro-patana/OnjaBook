@@ -36402,7 +36402,9 @@ function Feed() {
       src: post.imgUrl
     })), /*#__PURE__*/_react.default.createElement(_Likes.default, {
       post: post
-    }), /*#__PURE__*/_react.default.createElement("div", null, post.comments.map(function (comment) {
+    }), /*#__PURE__*/_react.default.createElement("div", {
+      className: "comment-container"
+    }, post.comments.map(function (comment) {
       var find = users.find(function (user) {
         return user.userId === comment.userId;
       });
