@@ -40,12 +40,18 @@ function ContextProvider({ children }) {
 					};
 				}
 				case "ADD_NEW_COMMENT": {
-					const mapPost = posts.map(post => (
-						post.comments.map(comment => comment.commentId)
-					))
+					const mapPost = state.posts.map(post => {
+						if(post.postId === action.id) {
+							return {
+								...post,
+								comments: [...post.comments, action.comment]
+							}
+						}
+						return post;
+					})
 					return {
-						...post,
-						comments: [...comments, action.value]
+						...state,
+						posts: mapPost
 					}
 				}
 				default: {
@@ -59,6 +65,8 @@ function ContextProvider({ children }) {
 			loading: true,
 			posts: [],
 			users: [],
+			comments: [],
+			comment: "",
 			currentUser: '1',
 		}
 	);
