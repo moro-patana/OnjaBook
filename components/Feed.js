@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Context } from '../context';
 import AddComment from "../components/addComment"
+import Likes from "../components/Likes"
 
 export default function Feed() {
 	const { state, dispatch } = useContext(Context);
@@ -26,9 +27,7 @@ export default function Feed() {
                                 <p>{post.postTextContent}</p>
                                 <img src={post.imgUrl}/>
                             </div>
-                            <div>
-                                <button>Like</button>
-                            </div>
+                            <Likes post={post}/>
                             <div>
                                 {post.comments.map(comment => {
                                     const find = users.find(user => user.userId === comment.userId);

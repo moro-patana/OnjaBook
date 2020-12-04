@@ -34049,9 +34049,44 @@ function ContextProvider(_ref) {
           });
         }
 
-      case "ADD_COMMENT_TO_POST":
+      case "LIKE_POST":
         {
           var newPosts = state.posts.map(function (post) {
+            if (post.postId === action.postId) {
+              return _objectSpread(_objectSpread({}, post), {}, {
+                likes: [].concat(_toConsumableArray(post.likes), [action.newLike])
+              });
+            }
+
+            return post;
+          });
+          return _objectSpread(_objectSpread({}, state), {}, {
+            posts: newPosts
+          });
+        }
+
+      case "UNLIKE_POST":
+        {
+          var _newPosts = state.posts.map(function (post) {
+            if (post.postId === action.postId) {
+              return _objectSpread(_objectSpread({}, post), {}, {
+                likes: post.likes.filter(function (like) {
+                  return like.userId !== state.currentUser;
+                })
+              });
+            }
+
+            return post;
+          });
+
+          return _objectSpread(_objectSpread({}, state), {}, {
+            posts: _newPosts
+          });
+        }
+
+      case "ADD_COMMENT_TO_POST":
+        {
+          var _newPosts2 = state.posts.map(function (post) {
             if (post.postId === action.postId) {
               return _objectSpread(_objectSpread({}, post), {}, {
                 comments: [].concat(_toConsumableArray(post.comments), [action.newCommentText])
@@ -34060,8 +34095,9 @@ function ContextProvider(_ref) {
 
             return post;
           });
+
           return _objectSpread(_objectSpread({}, state), {}, {
-            posts: newPosts
+            posts: _newPosts2
           });
         }
 
@@ -36258,7 +36294,81 @@ function AddComment(_ref) {
 
 var _default = AddComment;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","../context":"context.js"}],"components/Feed.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../context":"context.js"}],"components/Likes.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = Likes;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _styledComponents = _interopRequireDefault(require("styled-components"));
+
+var _context = require("../context");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\n\tdisplay: flex;\n\tgap: 10px;\n"]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var PostLikesStyles = _styledComponents.default.div(_templateObject());
+
+function Likes(_ref) {
+  var post = _ref.post;
+
+  var _useContext = (0, _react.useContext)(_context.Context),
+      state = _useContext.state,
+      dispatch = _useContext.dispatch;
+
+  var currentUser = state.currentUser;
+
+  function checkIfLikedOrNot() {
+    return post.likes.some(function (like) {
+      return like.userId === currentUser;
+    });
+  }
+
+  function likePost() {
+    var newLike = {
+      likeId: Date.now(),
+      userId: currentUser
+    };
+    dispatch({
+      type: 'LIKE_POST',
+      newLike: newLike,
+      postId: post.postId
+    });
+  }
+
+  function unlikePost() {
+    dispatch({
+      type: 'UNLIKE_POST',
+      postId: post.postId
+    });
+  }
+
+  return /*#__PURE__*/_react.default.createElement(PostLikesStyles, null, checkIfLikedOrNot() ? /*#__PURE__*/_react.default.createElement("button", {
+    onClick: unlikePost
+  }, "UnLike") : /*#__PURE__*/_react.default.createElement("button", {
+    onClick: likePost
+  }, "Like"), /*#__PURE__*/_react.default.createElement("span", null, post.likes.length));
+}
+},{"react":"node_modules/react/index.js","styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js","../context":"context.js"}],"components/Feed.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -36271,6 +36381,8 @@ var _react = _interopRequireWildcard(require("react"));
 var _context = require("../context");
 
 var _addComment = _interopRequireDefault(require("../components/addComment"));
+
+var _Likes = _interopRequireDefault(require("../components/Likes"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -36306,7 +36418,9 @@ function Feed() {
       className: "name"
     }, currentUserObj.userName)), /*#__PURE__*/_react.default.createElement("p", null, post.date)), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", null, post.postTextContent), /*#__PURE__*/_react.default.createElement("img", {
       src: post.imgUrl
-    })), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("button", null, "Like")), /*#__PURE__*/_react.default.createElement("div", null, post.comments.map(function (comment) {
+    })), /*#__PURE__*/_react.default.createElement(_Likes.default, {
+      post: post
+    }), /*#__PURE__*/_react.default.createElement("div", null, post.comments.map(function (comment) {
       var find = users.find(function (user) {
         return user.userId === comment.userId;
       });
@@ -36326,7 +36440,7 @@ function Feed() {
     }));
   })));
 }
-},{"react":"node_modules/react/index.js","../context":"context.js","../components/addComment":"components/addComment.js"}],"components/userProfile.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../context":"context.js","../components/addComment":"components/addComment.js","../components/Likes":"components/Likes.js"}],"components/userProfile.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {

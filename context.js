@@ -39,6 +39,36 @@ function ContextProvider({ children }) {
 						users: newUsersArray,
 					};
 				}
+				case "LIKE_POST": {
+					const newPosts = state.posts.map(post => {
+						if(post.postId === action.postId) {
+							return {
+								...post,
+								likes: [...post.likes, action.newLike ]
+							}
+						}
+						return post
+					})
+					return {
+						...state,
+						posts: newPosts
+					}
+				}
+				case "UNLIKE_POST": {
+					const newPosts = state.posts.map(post => {
+						if(post.postId === action.postId) {
+							return {
+								...post,
+								likes: post.likes.filter(like => like.userId !== state.currentUser)
+							}
+						}
+						return post
+					})
+					return {
+						...state,
+						posts: newPosts
+					}
+				}
 				case "ADD_COMMENT_TO_POST": {
 					const newPosts = state.posts.map(post => {
 						if(post.postId === action.postId) {
