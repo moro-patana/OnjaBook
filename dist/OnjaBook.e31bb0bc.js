@@ -33926,9 +33926,9 @@ module.exports = [{
 }, {
   "postId": "2",
   "date": 1606974894366,
-  "postTextContent": "This is the description",
+  "postTextContent": "Great Morning my dear friend!",
   "userId": "2",
-  "imgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSA0R7KmXODRogpb3WKploaDO4OeakhS9AeZw&usqp=CAU",
+  "imgUrl": "https://i.pinimg.com/474x/0b/ff/e5/0bffe5023acabbff7eaa12a9f135a3aa.jpg",
   "likes": [{
     "likeId": "1",
     "userId": "1"
