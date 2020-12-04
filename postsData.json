@@ -4,7 +4,7 @@
         "date": 1606974871743,
         "postTextContent": "This is the description",
         "userId": "1",
-        "imgUrl": "http://picsum.photos/100",
+        "imgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHa0f6hcO2LBO3QYUG6ADk2heesKrYchQCzw&usqp=CAU",
         "likes": [
             {
                 "likeId": "1",
@@ -35,7 +35,7 @@
         "date": 1606974894366,
         "postTextContent": "This is the description",
         "userId": "2",
-        "imgUrl": "http://picsum.photos/100",
+        "imgUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSA0R7KmXODRogpb3WKploaDO4OeakhS9AeZw&usqp=CAU",
         "likes": [
             {
                 "likeId": "1",
