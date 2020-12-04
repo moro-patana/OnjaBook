@@ -74,7 +74,8 @@ fieldset > button {
     padding: 1rem;
     border-radius: 12px;
 }
-.save {
+.save,
+.post {
     padding: 10px;
     border: none;
     width: 60px;
@@ -87,6 +88,24 @@ fieldset > button {
     border: none;
     border-radius: 12px;
 }
+.add-post {
+	display: grid;
+	gap: 10px;
+    background-color: aquamarine;
+    padding: 1rem;
+} 
+	textarea {
+        height: 100px;
+        border: none;
+        border-radius: 12px;
+        padding: 1rem;
+    }
+    .add-post input {
+        border: none;
+        padding: 10px;
+        border-radius: 12px;
+    }
+
 @media (min-width: 1114px) {
     body {
         max-width: 800px;

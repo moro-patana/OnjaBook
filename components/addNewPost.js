@@ -1,15 +1,5 @@
 import React, { useState, useContext } from 'react';
 import { Context } from '../context';
-import styled from 'styled-components';
-
-const FormStyle = styled.form`
-	display: grid;
-	gap: 10px;
-	grid-template-columns: 200px;
-	textarea {
-		height: 100px;
-	}
-`;
 
 export default function AddPost() {
 	const [postContent, setPostContent] = useState('');
@@ -43,7 +33,7 @@ export default function AddPost() {
 	return (
 		<div>
 			<h2>Add a post</h2>
-			<FormStyle onSubmit={handleNewPost}>
+			<form onSubmit={handleNewPost} className="add-post">
 				<label>New post content:</label>
 				<textarea
 					placeholder="Say what's on your mind..."
@@ -60,8 +50,8 @@ export default function AddPost() {
 					onChange={e => setPostImage(e.target.value)}
 					required
 				/>
-				<button>Post</button>
-			</FormStyle>
+				<button className="post">Post</button>
+			</form>
 		</div>
 	);
 }
