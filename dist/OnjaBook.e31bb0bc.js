@@ -33903,7 +33903,7 @@ module.exports = [{
   "postId": "1",
   "date": 1606974871743,
   "postTextContent": "This is the description",
-  "userId": "1212222",
+  "userId": "1",
   "imgUrl": "http://picsum.photos/100",
   "likes": [{
     "likeId": "1",
@@ -36189,6 +36189,7 @@ function Feed() {
       loading = state.loading,
       users = state.users,
       currentUser = state.currentUser;
+  console.log(posts);
   var currentUserObj = users.find(function (user) {
     return user.userId === currentUser;
   });
@@ -36207,9 +36208,20 @@ function Feed() {
     }, currentUserObj.userName)), /*#__PURE__*/_react.default.createElement("p", null, post.date)), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", null, post.postTextContent), /*#__PURE__*/_react.default.createElement("img", {
       src: post.imgUrl
     })), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("button", null, "Like")), /*#__PURE__*/_react.default.createElement("div", null, post.comments.map(function (comment) {
-      return /*#__PURE__*/_react.default.createElement("p", {
+      var find = users.find(function (user) {
+        return user.userId === comment.userId;
+      });
+      return /*#__PURE__*/_react.default.createElement("div", {
         key: comment.commentId
-      }, comment.commentTextContent);
+      }, /*#__PURE__*/_react.default.createElement("div", {
+        className: "post_heading"
+      }, /*#__PURE__*/_react.default.createElement("div", {
+        className: "user_profile"
+      }, /*#__PURE__*/_react.default.createElement("img", {
+        className: "profile",
+        src: find.profilePictureUrl,
+        alt: find.userName
+      }), /*#__PURE__*/_react.default.createElement("span", null, find.userName)), /*#__PURE__*/_react.default.createElement("span", null, comment.date)), /*#__PURE__*/_react.default.createElement("p", null, comment.commentTextContent));
     })));
   })));
 }
@@ -36443,7 +36455,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61502" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64503" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

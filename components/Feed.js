@@ -4,6 +4,7 @@ import { Context } from '../context';
 export default function Feed() {
 	const { state, dispatch } = useContext(Context);
     const { posts, loading, users, currentUser } = state;
+    console.log(posts);
     const currentUserObj = users.find(user => user.userId === currentUser)
     	return (
 		<div>
@@ -28,10 +29,22 @@ export default function Feed() {
                                 <button>Like</button>
                             </div>
                             <div>
-                                {post.comments.map(comment => (
+                                {post.comments.map(comment => {
+                                    const find = users.find(user => user.userId === comment.userId);
                                     
-                                    <p key={comment.commentId}>{comment.commentTextContent}</p>
-                                ))}
+                                    return (
+                                        <div key={comment.commentId}>
+                                            <div className="post_heading">
+                                                <div className="user_profile">
+                                                    <img className="profile" src={find.profilePictureUrl} alt={find.userName}/>
+                                                    <span>{find.userName}</span>
+                                                </div>
+                                                <span>{comment.date}</span>
+                                            </div>
+                                            <p>{comment.commentTextContent}</p>
+                                        </div>
+                                    )
+                                })}
                             </div>
                         </div>
 					))}
