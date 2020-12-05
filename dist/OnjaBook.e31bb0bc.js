@@ -34358,7 +34358,9 @@ function Likes(_ref) {
     });
   }
 
-  return /*#__PURE__*/_react.default.createElement("div", null, checkIfLikedOrNot() ? /*#__PURE__*/_react.default.createElement("button", {
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "like-post"
+  }, checkIfLikedOrNot() ? /*#__PURE__*/_react.default.createElement("button", {
     className: "like",
     onClick: unlikePost
   }, "UnLike") : /*#__PURE__*/_react.default.createElement("button", {
