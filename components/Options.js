@@ -7,9 +7,11 @@ import ProfileOptions from "../components/ProfileOptions"
 export default function Options() {
     return (
         <div>
-            <Link to="/options">Account Options</Link>
-            <Link to="/options/add">Add new Profile</Link>
-            <Link to="/options/switch">Switch account</Link>
+            <div class="options">
+                <Link to="/options">Account Options</Link>
+                <Link to="/options/add">Add new Profile</Link>
+                <Link to="/options/switch">Switch account</Link>
+            </div>
 
             <Switch>
                 <Route exact path="/options"><ProfileOptions/></Route>

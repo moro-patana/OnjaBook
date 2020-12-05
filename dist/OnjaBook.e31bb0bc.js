@@ -34699,13 +34699,15 @@ var _ProfileOptions = _interopRequireDefault(require("../components/ProfileOptio
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function Options() {
-  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
+    class: "options"
+  }, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
     to: "/options"
   }, "Account Options"), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
     to: "/options/add"
   }, "Add new Profile"), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
     to: "/options/switch"
-  }, "Switch account"), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Switch, null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
+  }, "Switch account")), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Switch, null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
     exact: true,
     path: "/options"
   }, /*#__PURE__*/_react.default.createElement(_ProfileOptions.default, null)), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
