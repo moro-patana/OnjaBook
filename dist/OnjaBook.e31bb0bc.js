@@ -34497,28 +34497,53 @@ function AddProfile() {
       userName = _useState2[0],
       setUserName = _useState2[1];
 
-  var _useState3 = (0, _react.useState)(""),
+  var _useState3 = (0, _react.useState)("https://i.pinimg.com/474x/0b/ff/e5/0bffe5023acabbff7eaa12a9f135a3aa.jpg"),
       _useState4 = _slicedToArray(_useState3, 2),
       profilePicture = _useState4[0],
       setProfilePicture = _useState4[1];
 
   var _useState5 = (0, _react.useState)(""),
       _useState6 = _slicedToArray(_useState5, 2),
-      birthdate = _useState6[0],
-      setBirthdate = _useState6[1];
+      birthDate = _useState6[0],
+      setBirthDate = _useState6[1];
 
-  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("form", null, /*#__PURE__*/_react.default.createElement("input", {
+  function createNewUser(e) {
+    e.preventDefault();
+    var newUser = {
+      userId: Date.now().toString(),
+      profilePictureUrl: profilePicture,
+      userName: userName,
+      birthDate: birthDate
+    };
+    dispatch({
+      type: "ADD_NEW_USER",
+      newUser: newUser
+    });
+  }
+
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("form", {
+    onSubmit: createNewUser
+  }, /*#__PURE__*/_react.default.createElement("input", {
     type: "text",
     placeholder: "Type the userName",
-    value: userName
+    value: userName,
+    onChange: function onChange(e) {
+      return setUserName(e.target.value);
+    }
   }), /*#__PURE__*/_react.default.createElement("input", {
     type: "url",
     placeholder: "Type your picture url",
-    value: profilePicture
+    value: profilePicture,
+    onChange: function onChange(e) {
+      return setProfilePicture(e.target.value);
+    }
   }), /*#__PURE__*/_react.default.createElement("input", {
     type: "date",
     placeholder: "Type your birthdate",
-    value: birthdate
+    value: birthDate,
+    onChange: function onChange(e) {
+      return setBirthDate(e.target.value);
+    }
   }), /*#__PURE__*/_react.default.createElement("button", null, "Save")));
 }
 },{"react":"node_modules/react/index.js","../context":"context.js"}],"components/SwitchProfile.js":[function(require,module,exports) {
