@@ -2,7 +2,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import AddNewPost from "../components/addNewPost";
 import Feed from '../components/Feed'
-import UserProfile from "../components/userProfile"
+import Options from "../components/Options"
 import Header from "../components/header"
 
 export default function App() {
@@ -17,7 +17,7 @@ export default function App() {
 					<AddNewPost />
 				</Route>
 				<Route path="/options">
-					<UserProfile />
+					<Options />
 				</Route>
 			</Switch>
 		</div>
