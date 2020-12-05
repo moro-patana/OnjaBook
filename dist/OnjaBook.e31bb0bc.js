@@ -34521,7 +34521,9 @@ function AddProfile() {
     });
   }
 
-  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h2", null, "Add Profile"), /*#__PURE__*/_react.default.createElement("form", {
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "add-profile"
+  }, /*#__PURE__*/_react.default.createElement("h2", null, "Add Profile"), /*#__PURE__*/_react.default.createElement("form", {
     onSubmit: createNewUser
   }, /*#__PURE__*/_react.default.createElement("input", {
     type: "text",
