@@ -34446,9 +34446,49 @@ function Feed() {
     }));
   })));
 }
-},{"react":"node_modules/react/index.js","../context":"context.js","../components/addComment":"components/addComment.js","../components/Likes":"components/Likes.js"}],"components/Options.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../context":"context.js","../components/addComment":"components/addComment.js","../components/Likes":"components/Likes.js"}],"components/AddProfile.js":[function(require,module,exports) {
 
-},{}],"node_modules/shallowequal/index.js":[function(require,module,exports) {
+},{}],"components/SwitchProfile.js":[function(require,module,exports) {
+
+},{}],"components/ProfileOptions.js":[function(require,module,exports) {
+
+},{}],"components/Options.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = Options;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _reactRouterDom = require("react-router-dom");
+
+var _AddProfile = _interopRequireDefault(require("../components/AddProfile"));
+
+var _SwitchProfile = _interopRequireDefault(require("../components/SwitchProfile"));
+
+var _ProfileOptions = _interopRequireDefault(require("../components/ProfileOptions"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function Options() {
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
+    to: "/options"
+  }, "Account Options"), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
+    to: "/options/add"
+  }, "Add new Profile"), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
+    to: "/options/switch"
+  }, "Switch account"), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Switch, null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
+    exact: true,
+    path: "/options"
+  }, /*#__PURE__*/_react.default.createElement(_ProfileOptions.default, null)), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
+    path: "/options/add"
+  }, /*#__PURE__*/_react.default.createElement(_AddProfile.default, null)), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
+    path: "/options"
+  }, /*#__PURE__*/_react.default.createElement(_SwitchProfile.default, null))));
+}
+},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../components/AddProfile":"components/AddProfile.js","../components/SwitchProfile":"components/SwitchProfile.js","../components/ProfileOptions":"components/ProfileOptions.js"}],"node_modules/shallowequal/index.js":[function(require,module,exports) {
 //
 
 module.exports = function shallowEqual(objA, objB, compare, compareContext) {
