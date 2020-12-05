@@ -18,8 +18,12 @@ img {
     flex-direction: row;
     justify-content: space-between;
 }
-.user {
+.user,
+.like-post {
     display: flex;
+}
+.like-post span {
+    padding: 10px;
 }
 .profile {
     width: 50px;
