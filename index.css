@@ -9,3 +9,6 @@ body {
     padding: 1rem;
     border-radius: 12px;
 }
+img {
+    width: 100%;
+}
