@@ -34359,8 +34359,10 @@ function Likes(_ref) {
   }
 
   return /*#__PURE__*/_react.default.createElement("div", null, checkIfLikedOrNot() ? /*#__PURE__*/_react.default.createElement("button", {
+    className: "like",
     onClick: unlikePost
   }, "UnLike") : /*#__PURE__*/_react.default.createElement("button", {
+    className: "like",
     onClick: likePost
   }, "Like"), /*#__PURE__*/_react.default.createElement("span", null, post.likes.length));
 }
@@ -36646,7 +36648,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64503" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64386" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
