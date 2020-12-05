@@ -115,3 +115,10 @@ textarea {
     padding: 1rem;
     border-radius: 12px;
 }
+
+@media (min-width:1114px) {
+    body {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+}
