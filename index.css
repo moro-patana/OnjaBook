@@ -17,3 +17,8 @@ img {
 	height: 35px;
 	border-radius: 50%;
 }
+.post_card {
+    background-color: #eebbc3;
+    border-radius: 12px;
+    padding: 1rem;
+}
