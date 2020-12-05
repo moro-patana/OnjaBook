@@ -12,3 +12,8 @@ body {
 img {
     width: 100%;
 }
+.profile-picture {
+    width: 35px;
+	height: 35px;
+	border-radius: 50%;
+}
