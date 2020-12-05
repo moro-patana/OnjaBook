@@ -4,3 +4,8 @@ body {
     background-color: #232946;
     color: #fffffe;
 }
+.post {
+    background-color: #b8c1ec;
+    padding: 1rem;
+    border-radius: 12px;
+}
