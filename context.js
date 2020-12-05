@@ -41,10 +41,10 @@ function ContextProvider({ children }) {
 				}
 				case "LIKE_POST": {
 					const newPosts = state.posts.map(post => {
-						if(post.postId === action.postId) {
+						if (post.postId === action.postId) {
 							return {
 								...post,
-								likes: [...post.likes, action.newLike ]
+								likes: [...post.likes, action.newLike]
 							}
 						}
 						return post
@@ -56,7 +56,7 @@ function ContextProvider({ children }) {
 				}
 				case "UNLIKE_POST": {
 					const newPosts = state.posts.map(post => {
-						if(post.postId === action.postId) {
+						if (post.postId === action.postId) {
 							return {
 								...post,
 								likes: post.likes.filter(like => like.userId !== state.currentUser)
@@ -71,7 +71,7 @@ function ContextProvider({ children }) {
 				}
 				case "ADD_COMMENT_TO_POST": {
 					const newPosts = state.posts.map(post => {
-						if(post.postId === action.postId) {
+						if (post.postId === action.postId) {
 							return {
 								...post,
 								comments: [...post.comments, action.newCommentText]
@@ -84,7 +84,7 @@ function ContextProvider({ children }) {
 						posts: newPosts
 					}
 				}
-                case "SWITCH_USER_ACCOUNT": {
+				case "SWITCH_USER_ACCOUNT": {
 					return {
 						...state,
 						currentUser: action.newUserId

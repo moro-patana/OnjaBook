@@ -34304,11 +34304,10 @@ function AddComment(_ref) {
     setNewComment('');
   }
 
-  return /*#__PURE__*/_react.default.createElement("div", {
-    className: "add__comment"
-  }, /*#__PURE__*/_react.default.createElement("form", {
+  return /*#__PURE__*/_react.default.createElement("form", {
+    className: "add_comment",
     onSubmit: addNewComment
-  }, /*#__PURE__*/_react.default.createElement("fieldset", null, /*#__PURE__*/_react.default.createElement("input", {
+  }, /*#__PURE__*/_react.default.createElement("input", {
     type: "text",
     placeholder: "Add a comment",
     value: newComment,
@@ -34317,7 +34316,7 @@ function AddComment(_ref) {
     }
   }), /*#__PURE__*/_react.default.createElement("button", {
     className: "post"
-  }, "Post"))));
+  }, "Post"));
 }
 
 var _default = AddComment;
@@ -34452,9 +34451,11 @@ function Feed() {
         className: "profile-picture",
         src: find.profilePictureUrl,
         alt: find.userName
-      }), /*#__PURE__*/_react.default.createElement("span", null, find.userName)), /*#__PURE__*/_react.default.createElement("span", null, new Date(comment.date).toLocaleDateString())), /*#__PURE__*/_react.default.createElement("p", {
+      }), /*#__PURE__*/_react.default.createElement("span", {
+        className: "name"
+      }, find.userName)), /*#__PURE__*/_react.default.createElement("span", null, new Date(comment.date).toLocaleDateString())), /*#__PURE__*/_react.default.createElement("p", {
         className: "comment"
-      }, comment.commentTextContent));
+      }, comment.commentTextContent), /*#__PURE__*/_react.default.createElement("hr", null));
     })), /*#__PURE__*/_react.default.createElement(_addComment.default, {
       post: post
     }));
@@ -34524,6 +34525,7 @@ function AddProfile() {
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "add-profile"
   }, /*#__PURE__*/_react.default.createElement("h2", null, "Add Profile"), /*#__PURE__*/_react.default.createElement("form", {
+    className: "select-profile",
     onSubmit: createNewUser
   }, /*#__PURE__*/_react.default.createElement("input", {
     type: "text",
@@ -34589,6 +34591,7 @@ function SwitchProfile() {
   }
 
   return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h2", null, "Switch Account"), /*#__PURE__*/_react.default.createElement("form", {
+    className: "select-profile",
     onSubmit: switchAccount
   }, /*#__PURE__*/_react.default.createElement("select", {
     name: "userSelect",
@@ -34663,6 +34666,7 @@ function ProfileOptions() {
   }
 
   return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h2", null, "Profile Options"), /*#__PURE__*/_react.default.createElement("form", {
+    className: "select-profile",
     onSubmit: handleNewOptions
   }, /*#__PURE__*/_react.default.createElement("input", {
     type: "text",

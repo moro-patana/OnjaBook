@@ -5,12 +5,41 @@ body {
     color: #fffffe;
 }
 .post {
-    background-color: #b8c1ec;
     padding: 1rem;
     border-radius: 12px;
 }
 img {
     width: 100%;
+}
+a {
+    text-decoration: none;
+    color: #fffffe;
+}
+input,
+textarea,
+select {
+    padding: 10px;
+    border: none;
+    border-radius: 12px;
+}
+label {
+    color: black;
+}
+fieldset {
+    border: none;
+}
+form {
+    display: flex;
+}
+button {
+    padding: 10px;
+    border-radius: 12px;
+    border: none;
+    background-color: #fffffe;
+    color: #232946;
+}
+p {
+    color: #121629;
 }
 .profile-picture {
     width: 35px;
@@ -18,9 +47,73 @@ img {
 	border-radius: 50%;
 }
 .post_card {
-    background-color: #eebbc3;
+    background-color: #b8c1ec;
     border-radius: 12px;
     padding: 1rem;
+    margin-bottom: 1rem;
+    color: #232946;
+}
+.name {
+    padding: 12px;
+    margin: 0;
+}
+.post-comment {
+    padding-top: 1rem;
+}
+.comment {
+    padding: 3px;
+    margin: 0;
+}
+hr {
+    color: #fffffe;
+}
+.user,
+.post_heading,
+.add_comment,
+.user_profile,
+.like-post {
+    display: flex;
+    flex-direction: row;
+}
+.like-post {
+    margin-top: 1rem;
+}
+.like-post span {
+    padding: 10px;
+    font-size: 20px;
+}
+.post_heading,
+.add_comment {
+    justify-content: space-between;
+}
+.add-post {
+    display: grid;
+    grid-gap: 20px;
+    background-color: #b8c1ec;
+    border-radius: 12px;
+    padding: 1rem;
+}
+.add-post button,
+.select-profile button {
+    width: 60px;
+}
+textarea {
+    height: 200px;
+}
+.options {
+    padding-top: 30px;
+    display: flex;
+    flex-direction: column;
+}
+.options a {
+    padding-bottom: 1rem;
+}
+.select-profile {
+    display: grid;
+    grid-gap: 30px;
+    background-color: #b8c1ec;
+    padding: 1rem;
+    border-radius: 12px;
 }
 
 /*# sourceMappingURL=/OnjaBook.9ad09f98.css.map */

@@ -25,10 +25,10 @@ export default function Likes({ post }) {
 	return (
 		<div className="like-post">
 			{checkIfLikedOrNot() ? (
-				<button className="like"onClick={unlikePost}>UnLike</button>
+				<button className="like" onClick={unlikePost}>UnLike</button>
 			) : (
-				<button className="like"onClick={likePost}>Like</button>
-			)}
+					<button className="like" onClick={likePost}>Like</button>
+				)}
 
 			<span>{post.likes.length}</span>
 		</div>

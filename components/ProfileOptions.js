@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
-import {Context } from "../context";
+import { Context } from "../context";
 
 export default function ProfileOptions() {
 	const { state, dispatch } = useContext(Context);
@@ -24,7 +24,7 @@ export default function ProfileOptions() {
 	return (
 		<div>
 			<h2>Profile Options</h2>
-			<form onSubmit={handleNewOptions}>
+			<form className="select-profile" onSubmit={handleNewOptions}>
 				<input
 					type="text"
 					value={userName}

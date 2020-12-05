@@ -18,7 +18,7 @@ export default function SwitchProfile() {
 	return (
 		<div>
 			<h2>Switch Account</h2>
-			<form onSubmit={switchAccount}>
+			<form className="select-profile" onSubmit={switchAccount}>
 				<select name="userSelect" defaultValue={currentUser}>
 					{usersOptions}
 				</select>

@@ -28,8 +28,8 @@ const ProfileLinkStyles = styled.div`
 `;
 
 export default function Header() {
-	const {state, dispatch} = useContext(Context)
-	const {users, currentUser} = state
+	const { state, dispatch } = useContext(Context)
+	const { users, currentUser } = state
 	const currentUserObj = users.find(user => user.userId === currentUser)
 	return (
 		<div>
@@ -48,7 +48,7 @@ export default function Header() {
 							<Link to="/options">
 								<ProfileLinkStyles>
 									<span>{currentUserObj.userName}</span>
-									<img className="profile-picture" src={currentUserObj.profilePictureUrl}/>
+									<img className="profile-picture" src={currentUserObj.profilePictureUrl} />
 								</ProfileLinkStyles>
 							</Link>
 						)}

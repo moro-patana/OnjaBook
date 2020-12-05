@@ -1,5 +1,5 @@
 import React from 'react'
-import {Switch, Route, Link} from "react-router-dom"
+import { Switch, Route, Link } from "react-router-dom"
 import AddProfile from "../components/AddProfile"
 import SwitchProfile from "../components/SwitchProfile"
 import ProfileOptions from "../components/ProfileOptions"
@@ -14,9 +14,9 @@ export default function Options() {
             </div>
 
             <Switch>
-                <Route exact path="/options"><ProfileOptions/></Route>
-                <Route path="/options/add"><AddProfile/></Route>
-                <Route path="/options"><SwitchProfile/></Route>
+                <Route exact path="/options"><ProfileOptions /></Route>
+                <Route path="/options/add"><AddProfile /></Route>
+                <Route path="/options"><SwitchProfile /></Route>
             </Switch>
         </div>
     )
