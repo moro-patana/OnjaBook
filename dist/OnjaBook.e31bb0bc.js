@@ -34508,8 +34508,53 @@ function AddProfile() {
   }), /*#__PURE__*/_react.default.createElement("button", null, "Save")));
 }
 },{"react":"node_modules/react/index.js","../context":"context.js"}],"components/SwitchProfile.js":[function(require,module,exports) {
+"use strict";
 
-},{}],"components/ProfileOptions.js":[function(require,module,exports) {
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = SwitchProfile;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _context = require("../context");
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function SwitchProfile() {
+  var _useContext = (0, _react.useContext)(_context.Context),
+      state = _useContext.state,
+      dispatch = _useContext.dispatch;
+
+  var users = state.users,
+      currentUser = state.currentUser;
+  var usersOptions = users.map(function (user) {
+    return /*#__PURE__*/_react.default.createElement("option", {
+      key: user.userId,
+      value: user.userId
+    }, user.userName);
+  });
+
+  function switchAccount(e) {
+    e.preventDefault();
+    var newUserId = e.target.userSelect.value;
+    console.log(newUserId);
+    dispatch({
+      type: 'SWITCH_USER_ACCOUNT',
+      newUserId: newUserId
+    });
+  }
+
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("form", {
+    onSubmit: switchAccount
+  }, /*#__PURE__*/_react.default.createElement("select", {
+    name: "userSelect",
+    defaultValue: currentUser
+  }, usersOptions), /*#__PURE__*/_react.default.createElement("button", null, "Save")));
+}
+},{"react":"node_modules/react/index.js","../context":"context.js"}],"components/ProfileOptions.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
