@@ -84,7 +84,18 @@ function ContextProvider({ children }) {
 						posts: newPosts
 					}
 				}
-
+                case "SWITCH_USER_ACCOUNT": {
+					return {
+						...state,
+						currentUser: action.newUserId
+					}
+				}
+				case "ADD_NEW_USER": {
+					return {
+						...state,
+						users: [...state.users, action.newUser]
+					}
+				}
 				default: {
 					console.error('No actions defined for', action.type);
 					break;

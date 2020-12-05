@@ -34101,6 +34101,20 @@ function ContextProvider(_ref) {
           });
         }
 
+      case "SWITCH_USER_ACCOUNT":
+        {
+          return _objectSpread(_objectSpread({}, state), {}, {
+            currentUser: action.newUserId
+          });
+        }
+
+      case "ADD_NEW_USER":
+        {
+          return _objectSpread(_objectSpread({}, state), {}, {
+            users: [].concat(_toConsumableArray(state.users), [action.newUser])
+          });
+        }
+
       default:
         {
           console.error('No actions defined for', action.type);
