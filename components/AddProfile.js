@@ -19,6 +19,7 @@ export default function AddProfile() {
      }
     return (
         <div>
+            <h2>Add Profile</h2>
             <form onSubmit={createNewUser}>
                 <input 
                 type="text"
