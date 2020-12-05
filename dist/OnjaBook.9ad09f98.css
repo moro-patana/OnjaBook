@@ -75,12 +75,16 @@ fieldset > button {
     border-radius: 12px;
 }
 .save,
-.post {
+.post,
+.like {
     padding: 10px;
     border: none;
     width: 60px;
     border-radius: 10px;
     background-color: white;
+}
+.like {
+    background-color: skyblue;
 }
 .profile-post input {
     margin-bottom: 1rem;
