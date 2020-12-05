@@ -7,7 +7,7 @@ import Header from "../components/header"
 
 export default function App() {
 	return (
-		<div>
+		<div className="post">
 			<Header />
 			<Switch>
 				<Route path="/" exact>

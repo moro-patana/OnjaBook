@@ -36781,7 +36781,9 @@ var _header = _interopRequireDefault(require("../components/header"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function App() {
-  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_header.default, null), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Switch, null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "post"
+  }, /*#__PURE__*/_react.default.createElement(_header.default, null), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Switch, null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
     path: "/",
     exact: true
   }, /*#__PURE__*/_react.default.createElement(_Feed.default, null)), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
