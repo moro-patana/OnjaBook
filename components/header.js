@@ -48,7 +48,7 @@ export default function Header() {
 							<Link to="/options">
 								<ProfileLinkStyles>
 									<span>{currentUserObj.userName}</span>
-									<img src={currentUserObj.profilePictureUrl}/>
+									<img className="profile-picture" src={currentUserObj.profilePictureUrl}/>
 								</ProfileLinkStyles>
 							</Link>
 						)}

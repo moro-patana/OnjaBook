@@ -18,7 +18,7 @@ export default function Feed() {
 						<div key={post.postId}  className="post_card">
                              <div className="post_heading">
                                  <div className="user">
-                                    <img className="profile" src={currentUserObj.profilePictureUrl}/>
+                                    <img className="profile-picture" src={currentUserObj.profilePictureUrl}/>
                                     <p className="name">{currentUserObj.userName}</p>
                                   </div>
                                   <p>{new Date(post.date).toLocaleDateString()}</p>
@@ -36,7 +36,7 @@ export default function Feed() {
                                         <div key={comment.commentId} className="post-comment">
                                             <div className="post_heading">
                                                 <div className="user_profile">
-                                                    <img className="profile" src={find.profilePictureUrl} alt={find.userName}/>
+                                                    <img className="profile-picture" src={find.profilePictureUrl} alt={find.userName}/>
                                                     <span>{find.userName}</span>
                                                 </div>
                                                 <span>{new Date(comment.date).toLocaleDateString()}</span>

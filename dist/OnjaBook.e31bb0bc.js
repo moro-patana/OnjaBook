@@ -34426,7 +34426,7 @@ function Feed() {
     }, /*#__PURE__*/_react.default.createElement("div", {
       className: "user"
     }, /*#__PURE__*/_react.default.createElement("img", {
-      className: "profile",
+      className: "profile-picture",
       src: currentUserObj.profilePictureUrl
     }), /*#__PURE__*/_react.default.createElement("p", {
       className: "name"
@@ -34449,7 +34449,7 @@ function Feed() {
       }, /*#__PURE__*/_react.default.createElement("div", {
         className: "user_profile"
       }, /*#__PURE__*/_react.default.createElement("img", {
-        className: "profile",
+        className: "profile-picture",
         src: find.profilePictureUrl,
         alt: find.userName
       }), /*#__PURE__*/_react.default.createElement("span", null, find.userName)), /*#__PURE__*/_react.default.createElement("span", null, new Date(comment.date).toLocaleDateString())), /*#__PURE__*/_react.default.createElement("p", {
@@ -36754,6 +36754,7 @@ function Header() {
   }, "Add a post")), /*#__PURE__*/_react.default.createElement("li", null, currentUserObj && /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
     to: "/options"
   }, /*#__PURE__*/_react.default.createElement(ProfileLinkStyles, null, /*#__PURE__*/_react.default.createElement("span", null, currentUserObj.userName), /*#__PURE__*/_react.default.createElement("img", {
+    className: "profile-picture",
     src: currentUserObj.profilePictureUrl
   })))))));
 }
